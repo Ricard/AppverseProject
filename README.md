@@ -22,6 +22,9 @@ Appverse Web is a multi-frontend technology capable web application framework in
 
 * install npm
 * bower and grunt (run the following commands):
+* 
+
+
 
 ```script
 npm install -g bower
