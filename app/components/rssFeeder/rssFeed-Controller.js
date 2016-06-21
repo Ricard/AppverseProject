@@ -7,8 +7,11 @@ app.controller('rssFeedCtrl', function(rssFeedSrv){
     var vm = this;
     vm.url = "http://feeds.weblogssl.com/genbeta";
     vm.data = [];
+    vm.feed = [];
     rssFeedSrv.getFeed(vm.url)
         .then(function(result){
+            vm.feed = result.feed;
+            
             console.log("in controller", result);
             for (var i = 0; i < result.feed.entries.length; i++){
                 var entry = result.feed.entries[i];

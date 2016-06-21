@@ -1,9 +1,31 @@
 
-<h3>LListat de elements</h3>
 
-<div ng-cloak ng-repeat=" entry in rssCtrl.data">
+<!--<div ng-cloak ng-repeat=" entry in rssCtrl.data">
    
     
     <h3>{{entry.title}}</h3>
+</div>-->
+<!--<div class="pull-right">
+    <h3>LListat de elements</h3>
+    <h3>{{rssCtrl.feed.title}}</h3>
+    <h4>{{rssCtrl.feed.description}}</h4>
+<div ng-cloak ng-repeat=" entry in rssCtrl.feed.entries">
+    TITULO: {{entry.title}}
+</div>
+</div>-->
+
+<div class="container-fluid">
+    <div class="col-lg-3 rssfeed-sidebar">
+          ssfslkfslkfjsj
+    sfsfsfsf
+    </div>
+    <div class="col-lg-9">
+        <h3>LListat de elements</h3>
+    <h3>{{rssCtrl.feed.title}}</h3>
+    <h4>{{rssCtrl.feed.description}}</h4>
+<div ng-cloak ng-repeat=" entry in rssCtrl.feed.entries">
+    TITULO: {{entry.title}}
+</div>
+    </div>
 </div>
 

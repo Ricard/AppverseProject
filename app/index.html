@@ -23,12 +23,15 @@
     <link rel="stylesheet" href="../bower_components/angular-xeditable/dist/css/xeditable.css" />
     <link rel="stylesheet" href="../bower_components/angular-material-icons/angular-material-icons.css" />
     <link rel="stylesheet" href="../bower_components/angular-loading-bar/build/loading-bar.min.css" />
+    
+    
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css styles/css/styles.css -->
     <!-- include: "type": "css", "files": "<%= css %>" -->
 
   <link rel="stylesheet" type="text/css" href="styles/css/main.css" />
+  <link rel="stylesheet" type="text/css" href="/styles/css/rssFeed-css.css" />
     <!-- /include -->
     <!-- endbuild -->
 </head>
@@ -90,7 +93,7 @@
                         <span class="text">Menu Lateral</span>
                     </a>
                 </li>
-                <li data-ng-class="{ active: $state.includes('home') }">
+                <li  data-ng-class="{ active: $state.includes('home') }">
                     <a angular-ripple="" ui-sref="home"><i class="glyphicon glyphicon-home"></i> Inicio</a>
                 </li>
                 <li data-ng-class="{ active: $state.includes('rssfeed') }">
