@@ -75,6 +75,9 @@
                 <li data-ng-class="{ active: $state.includes('home') }">
                     <a angular-ripple ui-sref="home"><i class="glyphicon glyphicon-home"></i> Home</a>
                 </li>
+                <li data-ng-class="{ active: $state.includes('rssfeed') }">
+                    <a angular-ripple ui-sref="rssFeed"><i class="glyphicon glyphicon-list-alt"></i> RSSFeed</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -84,11 +87,14 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                        <span class="text">Sidebar Title</span>
+                        <span class="text">Menu Lateral</span>
                     </a>
                 </li>
                 <li data-ng-class="{ active: $state.includes('home') }">
-                    <a angular-ripple="" ui-sref="home"><i class="glyphicon glyphicon-home"></i> Home</a>
+                    <a angular-ripple="" ui-sref="home"><i class="glyphicon glyphicon-home"></i> Inicio</a>
+                </li>
+                <li data-ng-class="{ active: $state.includes('rssfeed') }">
+                    <a angular-ripple="" ui-sref="home"><i class="glyphicon glyphicon-list-alt"></i> RSSFeed</a>
                 </li>
             </ul>
             <a href="#menu-toggle" angular-ripple="" class="btn btn-primary menu-toggle" id="menu-toggle">
@@ -140,11 +146,22 @@
     <script src="../bower_components/angular-touch/angular-touch.min.js"></script>
     <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <!-- endbower -->
-
+    <!--EXTERNAL APIS:-->
+    <script src="https://www.google.com/jsapi"></script>
     <!-- include: "type": "js", "files": "<%= scripts %>" -->
     <script src="app.js"></script>
     <script src="states/app-states.js"></script>
+    
     <script src="components/home/home-controller.js"></script>
+    
+    <!--SCRIPT RESOURCES FOR RRRS BRANCH-->
+    <script src="components/rssFeeder/rssFeed-module.js"></script>
+    <script src="components/rssFeeder/rssFeed-Controller.js"></script>
+    <script src="components/rssFeeder/rssFeed-Service.js"></script>
+    
+    
+    
+    
     <!-- /include -->
     <!-- endbuild -->
 </body>

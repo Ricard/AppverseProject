@@ -44,5 +44,10 @@ angular.module('appverseprojectApp')
                   url: '/home',
                   templateUrl: 'components/home/home.html'
                 })
+                .state('rssFeed', {
+                  url: '/rssFeed',
+                  templateUrl: 'components/rssFeeder/feedList.html',
+                  controller: 'rssFeedCtrl as rssCtrl'
+                })
                 ;
             }]);
