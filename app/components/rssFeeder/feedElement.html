@@ -1,0 +1,23 @@
+
+
+
+<div class="container rssElement ">
+    <a ng-href="{{entry.link}}">
+    <div class="row">
+        <h4 class="header">{{entry.title}} <span class="badge pull-right">{{entry.feeder}}</span></h4>
+        
+    </div>
+    <div class="row">
+        <p>{{entry.contentSnippet}}</p>
+    </div>
+    <div class="row text-muted">
+        <div class="pull-left">
+            <p>{{entry.author}}</p>
+        </div>
+        <div class="pull-right">
+            <p>{{entry.publishedDate | date:"MM/dd/yyyy 'at' h:mma"}}</p>
+        </div>
+    </div>
+    
+    </a>
+</div>

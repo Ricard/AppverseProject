@@ -1,31 +1,37 @@
 
-
-<!--<div ng-cloak ng-repeat=" entry in rssCtrl.data">
-   
-    
-    <h3>{{entry.title}}</h3>
-</div>-->
-<!--<div class="pull-right">
-    <h3>LListat de elements</h3>
-    <h3>{{rssCtrl.feed.title}}</h3>
-    <h4>{{rssCtrl.feed.description}}</h4>
-<div ng-cloak ng-repeat=" entry in rssCtrl.feed.entries">
-    TITULO: {{entry.title}}
-</div>
-</div>-->
-
-<div class="container-fluid">
-    <div class="col-lg-3 rssfeed-sidebar">
+<!--<div class="container-fluid">
+    <h3 class = "text-center">LListat de elements</h3>
+    <div class="col-lg-2 rssfeed-sidebar">
           ssfslkfslkfjsj
     sfsfsfsf
     </div>
-    <div class="col-lg-9">
-        <h3>LListat de elements</h3>
+    <div class="col-lg-10">
+        
     <h3>{{rssCtrl.feed.title}}</h3>
     <h4>{{rssCtrl.feed.description}}</h4>
 <div ng-cloak ng-repeat=" entry in rssCtrl.feed.entries">
-    TITULO: {{entry.title}}
+    <h4 class="row"> {{entry.title}}</h4>
+    <div  class="row text-muted">{{entry.contentSnippet}}</div>
 </div>
+    </div>
+</div>-->
+<div class="container-fluid">
+    <div class="col-md-2">
+        <div class="row">
+            <h3>Roger Ribes</h3>
+        </div>
+        <div class="row">
+            <h4 class="header">Lista Canales</h4>
+            <ul>
+                <li>GenBeta</li>
+            </ul>
+            <button class="btn btn-primary btn-block"><i class="glyphicon glyphicon-plus"></i>Add</button>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div ng-cloak ng-repeat=" entry in rssCtrl.data">
+    <rss-feed-element></rss-feed-element>
+</div>        
     </div>
 </div>
 

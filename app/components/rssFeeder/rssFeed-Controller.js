@@ -15,6 +15,7 @@ app.controller('rssFeedCtrl', function(rssFeedSrv){
             console.log("in controller", result);
             for (var i = 0; i < result.feed.entries.length; i++){
                 var entry = result.feed.entries[i];
+                entry.feeder = result.feed.title;
                 vm.data.push(entry);
             }
             console.log("data posterior al resolve", vm.data);
