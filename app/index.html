@@ -29,7 +29,6 @@
     <!-- include: "type": "css", "files": "<%= css %>" -->
 
   <link rel="stylesheet" type="text/css" href="styles/css/main.css" />
-  <link rel="stylesheet" type="text/css" href="styles/css/rssFeed.css" />
     <!-- /include -->
     <!-- endbuild -->
 </head>
@@ -91,7 +90,7 @@
                         <span class="text">Menu Lateral</span>
                     </a>
                 </li>
-                <li  data-ng-class="{ active: $state.includes('home') }">
+                <li data-ng-class="{ active: $state.includes('home') }">
                     <a angular-ripple="" ui-sref="home"><i class="glyphicon glyphicon-home"></i> Inicio</a>
                 </li>
                 <li data-ng-class="{ active: $state.includes('rssfeed') }">
@@ -102,7 +101,7 @@
                 <i class="glyphicon glyphicon-triangle-left"></i>
             </a>
 
-            </div>
+        </div>
         <!-- /#sidebar-wrapper -->
         <!-- MAIN INSERTION POINT
             Here is the main ui-view (it is unnamed) as the main content insertion point.
@@ -146,19 +145,24 @@
     <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="../bower_components/angular-touch/angular-touch.min.js"></script>
     <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <!--<script src="../bower_components/angular-resource/angular-resource.js"></script>-->
     <!-- endbower -->
     <!--EXTERNAL APIS:-->
     <script src="https://www.google.com/jsapi"></script>
+    
+    <script src="//cdn.backand.net/backand/dist/1.8.2/backand.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-resource.js"></script>
+
     <!-- include: "type": "js", "files": "<%= scripts %>" -->
     <script src="app.js"></script>
     <script src="states/app-states.js"></script>
     <script src="components/rssFeeder/rssFeed-module.js"></script>
     <script src="components/home/home-controller.js"></script>
-    <script src="components/rssFeeder/rssFeed-Controller.js"></script>
-    <script src="components/rssFeeder/rssFeed-Service.js"></script>
     <script src="components/rssFeeder/feedElement-directive.js"></script>
-    
-    
+    <script src="components/rssFeeder/rssFeed-Controller.js"></script>
+    <script src="components/rssFeeder/rssFeed-FeederResource.js"></script>
+    <script src="components/rssFeeder/rssFeed-Service.js"></script>
+    <script src="components/rssFeeder/rssFeed-modal-Ctrl.js"></script>
     <!-- /include -->
     <!-- endbuild -->
 </body>

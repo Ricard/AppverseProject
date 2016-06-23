@@ -14,6 +14,7 @@
         'appverse.logging',
         'appverse.cache',
         'ngAnimate',
+        'ngResource',
         'ui.bootstrap',
         'angularRipple',
         'ui.select',
@@ -40,6 +41,7 @@
         'cfpLoadingBarProvider',
         function (cfpLoadingBarProvider) {
             cfpLoadingBarProvider.includeSpinner = false;
+          
         }
     ]);
     AppInit.setConfig({

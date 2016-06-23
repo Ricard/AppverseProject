@@ -1,35 +1,18 @@
-
-<!--<div class="container-fluid">
-    <h3 class = "text-center">LListat de elements</h3>
-    <div class="col-lg-2 rssfeed-sidebar">
-          ssfslkfslkfjsj
-    sfsfsfsf
-    </div>
-    <div class="col-lg-10">
-        
-    <h3>{{rssCtrl.feed.title}}</h3>
-    <h4>{{rssCtrl.feed.description}}</h4>
-<div ng-cloak ng-repeat=" entry in rssCtrl.feed.entries">
-    <h4 class="row"> {{entry.title}}</h4>
-    <div  class="row text-muted">{{entry.contentSnippet}}</div>
-</div>
-    </div>
-</div>-->
-<div class="container-fluid">
-    <div class="col-md-2">
+<div class="container-fluid">    
+    <div class="col-md-2 rssfeed-sidebar">
         <div class="row">
             <h3>Roger Ribes</h3>
         </div>
         <div class="row">
             <h4 class="header">Lista Canales</h4>
             <ul>
-                <li>GenBeta</li>
+                <li ng-cloak="" ng-repeat="feeds in rssCtrl.feedsLst">{{feeds.feedName}}</li>
             </ul>
-            <button class="btn btn-primary btn-block"><i class="glyphicon glyphicon-plus"></i>Add</button>
+            <button class="btn btn-primary btn-block pull-bottom" ng-click="rssCtrl.addFeeder()"><i class="glyphicon glyphicon-plus"></i>Add</button>
         </div>
     </div>
-    <div class="col-md-10">
-        <div ng-cloak ng-repeat=" entry in rssCtrl.data">
+    <div class="col-md-10 pull-right">
+        <div ng-cloak ng-repeat=" entry in rssCtrl.data | orderBy: '-publishedDate'">
     <rss-feed-element></rss-feed-element>
 </div>        
     </div>

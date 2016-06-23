@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h2 class="text-center">Add New Feeder</h2>
+</div>
+<form>
+<div class="modal-body">
+    <div class="form-group">
+        <label class="form-control-label" for="feedName">Nombre: </label>
+        <input id="feedName" class="form-control" type="text" ng-model="feed.feedName"/>
+    </div>
+    <div class="form-group">
+        <label class="form-control-label" for="feedUrl">URL: </label>
+        <input id="feedUrl" class="form-control" type="text" ng-model="feed.feedUrl"/>
+    </div>
+</div>
+<div class="modal-footer">
+    <button angular-ripple class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <button angular-ripple class="btn btn-primary" ng-click="ok()">OK</button>
+</form>
+</div>
