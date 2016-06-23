@@ -13,10 +13,28 @@ Appverse Web is a multi-frontend technology capable web application framework in
 
 
 
+
+
+
+
+
+
+
+
+
 * **About this project**: <http://appverse.github.com/appverse-web-html5-boilerplate>
 * **About Appverse Web HTML5 Module**: <http://appverse.github.com/appverse-web-html5-core>
 * **About licenses & groups**: <http://appverse.github.com>
 * **About The Appverse Project**: <http://appverse.org>
+
+
+
+
+
+
+
+
+
 
 ### Quick Start
 
