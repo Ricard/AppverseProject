@@ -5,8 +5,11 @@ var app = angular.module('RssFeedModule');
 
 app.controller('rssFeedCtrl',
     function(rssFeedSrv, $uibModal, feedResource) {
- 
+    
         var vm = this;
+        //Control for edit Feeders
+        vm.btnSelectText = "Select Actives";
+        vm.NotselectFeeder = true;
         // List of Entry Objects o Feeds
         vm.data = [];
         // List of Feeds
@@ -19,6 +22,7 @@ app.controller('rssFeedCtrl',
             vm.populateFeeder();
             vm.populateData();  
         };
+        
         //GET LIST OF FEEDERS
         vm.populateFeeder = function() {
             feedResource.get().$promise.then(function(data) {
@@ -44,6 +48,19 @@ app.controller('rssFeedCtrl',
             };
         };
         
+        // Active Select Feeders
+        
+        vm.canSelectFeeder = function(){
+            if(vm.NotselectFeeder){
+                vm.NotselectFeeder = false;
+                vm.btnSelectText = "Save";
+                
+            }else{
+                vm.NotselectFeeder = true;
+                vm.btnSelectText = "Select Actives";
+                vm.initialize();
+            }
+        };
                 
         // Add New Feeder
         vm.addFeeder = function() {

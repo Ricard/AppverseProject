@@ -5,10 +5,14 @@
         </div>
         <div class="row">
             <h4 class="header">Lista Canales</h4>
-            <ul>
-                <li ng-cloak="" ng-repeat="feeds in rssCtrl.feedsLst">{{feeds.feedName}}</li>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="feeds in rssCtrl.feedsLst" >
+                    <input type="checkbox" id="chkActive{{feeds.id}}" ng-disabled="rssCtrl.NotselectFeeder"/>
+                    <label for="chkActive{{feeds.id}}">{{feeds.feedName}}</label>
+                </li>
             </ul>
-            <button class="btn btn-primary btn-block pull-bottom" ng-click="rssCtrl.addFeeder()"><i class="glyphicon glyphicon-plus"></i>Add</button>
+            <button class="btn  btn-block pull-bottom" ng-click="rssCtrl.canSelectFeeder()"><i class="glyphicon glyphicon-ok"></i> {{rssCtrl.btnSelectText}}</button>
+            <button class="btn btn-primary btn-block pull-bottom" ng-click="rssCtrl.addFeeder()"><i class="glyphicon glyphicon-plus"></i> Add</button>
         </div>
     </div>
     <div class="col-md-10 pull-right">
