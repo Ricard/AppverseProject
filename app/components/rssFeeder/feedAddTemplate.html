@@ -1,7 +1,7 @@
 <div class="modal-header">
-    <h2 class="text-center">Add New Feeder</h2>
+    <h2 class="text-center">{{textTitle}}{{feed.feedName}}</h2>
 </div>
-<form>
+<form name="addfeeder">
 <div class="modal-body">
     <div class="form-group">
         <label class="form-control-label" for="feedName">Nombre: </label>
@@ -11,9 +11,22 @@
         <label class="form-control-label" for="feedUrl">URL: </label>
         <input id="feedUrl" class="form-control" type="text" ng-model="feed.feedUrl"/>
     </div>
+    <div class="form-group" ng-hide="feedNotValid">
+        <label class="form-control-label" for="feedUrl">Descripcion: </label>
+        <input id="feedUrl" class="form-control" type="text" ng-model="feed.feedDesc"/>
+    </div>
+    <div class="form-group" ng-show="feed.id">
+        <button angular-ripple class="btn btn-danger" ng-click="deletefeed()">Delete</button>
+    </div>
+    <div class="form-group form-inline" ng-show="!feed.id">
+        <button angular-ripple class="btn btn-success" ng-click="checkfeed()">Check</button>
+        <h4><span ng-hide="feedNotValid" class=" text-lg label label-success">Feeder Ok!</span></h4>
+        <h4><span ng-show="feedNotValid && addfeeder.$dirty " class=" text-lg label label-danger">Feeder not Valid!</span></h4>
+    </div>
 </div>
 <div class="modal-footer">
     <button angular-ripple class="btn btn-default" ng-click="cancel()">Cancel</button>
-    <button angular-ripple class="btn btn-primary" ng-click="ok()">OK</button>
-</form>
+    <button angular-ripple class="btn btn-primary" ng-disabled="feedNotValid" ng-click="ok()">OK</button>
+
 </div>
+</form>

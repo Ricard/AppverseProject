@@ -7,11 +7,15 @@
             <h4 class="header">Lista Canales</h4>
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="feeds in rssCtrl.feedsLst" >
-                    <input type="checkbox" id="chkActive{{feeds.id}}" ng-disabled="rssCtrl.NotselectFeeder" ng-click="rssCtrl.checkActive(feeds)" ng-checked="feeds.feedActive"/>
-                    <label for="chkActive{{feeds.id}}">{{feeds.feedName}}</label>
+                    <label ng-class="feeds.feedActive ? 'none' : 'text-muted'" for="chkActive{{feeds.id}}">{{feeds.feedName}}</label>
+                    <i class="glyphicon glyphicon-pencil pull-right icon"
+                        ng-click="rssCtrl.modFeeder(feeds)"></i>
+                    <i class="glyphicon  pull-right icon" 
+                        ng-class=" feeds.feedActive ? 'glyphicon-eye-open' : 'glyphicon-eye-close'"
+                        ng-click="rssCtrl.checkActive(feeds)" >
+                    </i>
                 </li>
             </ul>
-            <button class="btn  btn-block pull-bottom" ng-click="rssCtrl.canSelectFeeder()"><i class="glyphicon glyphicon-ok"></i> {{rssCtrl.btnSelectText}}</button>
             <button class="btn btn-primary btn-block pull-bottom" ng-click="rssCtrl.addFeeder()"><i class="glyphicon glyphicon-plus"></i> Add</button>
         </div>
     </div>

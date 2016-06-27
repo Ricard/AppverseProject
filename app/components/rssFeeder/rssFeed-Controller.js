@@ -52,7 +52,11 @@ app.controller('rssFeedCtrl',
             console.log("feed a modificar", feed);
             vm.modFeed = new feedResource(feed);
             //vm.modFeed.$save();    
-            vm.modFeed.$update(function(error){console.log("error en mod:", error)});
+            vm.modFeed.$update();
+             vm.data = [];
+             vm.populateData();
+            
+            
         }
         
         // Active Select Feeders
@@ -75,7 +79,10 @@ app.controller('rssFeedCtrl',
             var modalInstance = $uibModal.open({
                 animation: true,
                 controller: 'rssFeedModalCtrl',
-                templateUrl: 'components/rssFeeder/feedAddTemplate.html'
+                templateUrl: 'components/rssFeeder/feedAddTemplate.html',
+                resolve:{
+                    feeder: undefined
+                }
             });
             modalInstance.result.then(function(feed) {
                 //vm.feedsLst.push(feed);
@@ -83,6 +90,28 @@ app.controller('rssFeedCtrl',
                 vm.newFeeder.$save(function(error) {
                     console.log("Error al guardar:", error);
                 });
+                vm.initialize();
+            });
+        };
+        
+        //Modify Feeder Attrs
+        vm.modFeeder = function(feeder) {
+            // Create a Feeder Object
+            //vm.feedLst.push(feeder);
+           
+            var modalInstance = $uibModal.open({
+                animation: true,
+                controller: 'rssFeedModalCtrl',
+                templateUrl: 'components/rssFeeder/feedAddTemplate.html',
+                resolve:{
+                    feeder: feeder
+                }
+                                
+            });
+            modalInstance.result.then(function(feed) {
+                //vm.feedsLst.push(feed);
+                vm.newFeeder = new feedResource(feed);
+                vm.newFeeder.$update();
                 vm.initialize();
             });
         };
