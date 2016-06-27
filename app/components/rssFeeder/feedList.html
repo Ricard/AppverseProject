@@ -7,6 +7,7 @@
             <h4 class="header">Lista Canales</h4>
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="feeds in rssCtrl.feedsLst" >
+                    <img ng-src="http://www.google.com/s2/favicons?domain={{feeds.feedLink}}" alt="">
                     <label ng-class="feeds.feedActive ? 'none' : 'text-muted'" for="chkActive{{feeds.id}}">{{feeds.feedName}}</label>
                     <i class="glyphicon glyphicon-pencil pull-right icon"
                         ng-click="rssCtrl.modFeeder(feeds)"></i>

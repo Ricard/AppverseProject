@@ -29,6 +29,7 @@ app.controller('rssFeedModalCtrl',
                      $scope.feedNotValid = false;
                         $scope.feed.feedName = $scope.feedChecked.title;
                         $scope.feed.feedDesc = $scope.feedChecked.description;
+                        $scope.feed.feedLink = $scope.feedChecked.link;
                         $scope.feed.feedActive = true;
                          
                      }else{

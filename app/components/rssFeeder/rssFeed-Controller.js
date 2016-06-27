@@ -20,6 +20,7 @@ app.controller('rssFeedCtrl',
             vm.feedsLst = [];
             vm.data = [];
             vm.populateFeeder();
+            
  
         };
         
@@ -28,6 +29,7 @@ app.controller('rssFeedCtrl',
             feedResource.get().$promise.then(function(data) {
                 vm.feedsLst = data.data;
                 vm.populateData();
+                
             });
         };
         // Recover List of Feeds
@@ -36,15 +38,20 @@ app.controller('rssFeedCtrl',
                 if(vm.feedsLst[i].feedActive){
                     rssFeedSrv.getFeed(vm.feedsLst[i].feedUrl)
                     .then(function(result) {
+                        console.log("Feeder llegit", result);
                         for (var i = 0; i < result.feed.entries.length; i++) {
                             var entry = result.feed.entries[i];
                             entry.feeder = result.feed.title;
                             entry.publishedDate = new Date(entry.publishedDate);
                             vm.data.push(entry);
+                            
                         }
+                        console.log("Totes les entrades", vm.data);
                     });
                 }
             };
+            console.log("Tots els Feeders", vm.feedsLst);
+            console.log("Totes les entrades", vm.data);
         };
         //UpdateActiveFeed
         vm.checkActive = function (feed){
@@ -115,5 +122,6 @@ app.controller('rssFeedCtrl',
                 vm.initialize();
             });
         };
+        
         vm.initialize();
     });

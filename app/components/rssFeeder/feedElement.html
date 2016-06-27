@@ -1,5 +1,6 @@
 <div class="container rssElement ">
-    <a ng-href="{{entry.link}}">
+    <!--<a ng-href="{{entry.link}}">-->
+    <a ng-click="entry.showContent = !entry.showContent">
     <div class="row">
         <h4 class="header">{{entry.title}} <span class="badge pull-right">{{entry.feeder}}</span></h4>
         
@@ -17,4 +18,10 @@
     </div>
     
     </a>
+    <div class="feed-text" ng-show="entry.showContent">
+        <p ng-bind-html="entry.content"></p>
+    </div>
+    <div class="showArticle" ng-show="entry.showContent">
+        <a type="button" ng-href="{{entry.link}}" class="btn btn-primary" target="_blank">Ver Noticia Original</a><br>
+    </div>
 </div>

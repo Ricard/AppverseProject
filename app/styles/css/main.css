@@ -7501,10 +7501,12 @@ button[ngclipboard] {
   border: 2px solid #684949;
   padding: 0px 30px;
   margin: 5px;
-  width: 100%;
   border-radius: 10px;
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2); }
 
 .icon {
   padding: 5px; }
+
+.showArticle {
+  margin-bottom: 10px; }
 /*# sourceMappingURL=main.css.map */
