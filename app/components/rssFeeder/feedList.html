@@ -7,7 +7,7 @@
             <h4 class="header">Lista Canales</h4>
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="feeds in rssCtrl.feedsLst" >
-                    <input type="checkbox" id="chkActive{{feeds.id}}" ng-disabled="rssCtrl.NotselectFeeder"/>
+                    <input type="checkbox" id="chkActive{{feeds.id}}" ng-disabled="rssCtrl.NotselectFeeder" ng-click="rssCtrl.checkActive(feeds)" ng-checked="feeds.feedActive"/>
                     <label for="chkActive{{feeds.id}}">{{feeds.feedName}}</label>
                 </li>
             </ul>

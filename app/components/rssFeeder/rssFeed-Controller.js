@@ -20,7 +20,7 @@ app.controller('rssFeedCtrl',
             vm.feedsLst = [];
             vm.data = [];
             vm.populateFeeder();
-            vm.populateData();  
+ 
         };
         
         //GET LIST OF FEEDERS
@@ -28,28 +28,34 @@ app.controller('rssFeedCtrl',
             feedResource.get().$promise.then(function(data) {
                 vm.feedsLst = data.data;
                 vm.populateData();
-                console.log("llista from backand", vm.feedsLst);
             });
         };
         // Recover List of Feeds
         vm.populateData = function() {
             for (var i = 0; i < vm.feedsLst.length; i++) {
-                rssFeedSrv.getFeed(vm.feedsLst[i].feedUrl)
+                if(vm.feedsLst[i].feedActive){
+                    rssFeedSrv.getFeed(vm.feedsLst[i].feedUrl)
                     .then(function(result) {
-                        console.log("in controller", result);
                         for (var i = 0; i < result.feed.entries.length; i++) {
                             var entry = result.feed.entries[i];
                             entry.feeder = result.feed.title;
                             entry.publishedDate = new Date(entry.publishedDate);
                             vm.data.push(entry);
                         }
-                        console.log("data posterior al resolve", vm.data);
                     });
+                }
             };
         };
+        //UpdateActiveFeed
+        vm.checkActive = function (feed){
+            feed.feedActive = !feed.feedActive;
+            console.log("feed a modificar", feed);
+            vm.modFeed = new feedResource(feed);
+            //vm.modFeed.$save();    
+            vm.modFeed.$update(function(error){console.log("error en mod:", error)});
+        }
         
         // Active Select Feeders
-        
         vm.canSelectFeeder = function(){
             if(vm.NotselectFeeder){
                 vm.NotselectFeeder = false;
@@ -80,8 +86,5 @@ app.controller('rssFeedCtrl',
                 vm.initialize();
             });
         };
-
-        
-        vm.newFeed = new feedResource();
         vm.initialize();
     });
