@@ -15,10 +15,10 @@
 <div class="header low">
     <h1>Code coverage report for <span class="entity">./app/components/rssFeeder/rssFeed-modal-Ctrl.js</span></h1>
     <h2>
-        Statements: <span class="metric">0% <small>(0 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">0% <small>(0 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">0% <small>(0 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">0% <small>(0 / 28)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">0% <small>(0 / 28)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">./app/components/rssFeeder/</a> &#187; rssFeed-modal-Ctrl.js</div>
@@ -49,7 +49,50 @@
 22
 23
 24
-25</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -58,12 +101,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -77,23 +135,52 @@
 &nbsp;
 <span class="cstat-no" title="statement not covered" >var app = angular.module('RssFeedModule');</span>
 &nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
 <span class="cstat-no" title="statement not covered" >app.controller('rssFeedModalCtrl',</span>
-<span class="fstat-no" title="function not covered" >    function($scope, $uibModalInstance) {</span>
-&nbsp;
-        'use strict';
-<span class="cstat-no" title="statement not covered" >        $scope.feed = {</span>
-            feedName: "",
-            feedUrl: ""
+<span class="fstat-no" title="function not covered" >    function($scope, $uibModalInstance, feeder, feedResource, rssFeedSrv) {</span>
+       
+<span class="cstat-no" title="statement not covered" >        $scope.feedNotValid = true;</span>
+<span class="cstat-no" title="statement not covered" >        $scope.textTitle = "Add New Feeder: ";</span>
+        
+        // Check if is a New or Update Feeder
+<span class="cstat-no" title="statement not covered" >        if(feeder){</span>
+<span class="cstat-no" title="statement not covered" >            $scope.feedNotValid = false;</span>
+<span class="cstat-no" title="statement not covered" >            $scope.feed = feeder;</span>
+<span class="cstat-no" title="statement not covered" >            $scope.textTitle = "Editar Feeder: ";</span>
+        }else{
+<span class="cstat-no" title="statement not covered" >            $scope.feed = {</span>
+                feedName: "",
+                feedUrl: ""
+            };
+    };
+        // Check if a New Feeder is Valid before to add them
+<span class="cstat-no" title="statement not covered" >        $scope.checkfeed = <span class="fstat-no" title="function not covered" >function(){</span></span>
+<span class="cstat-no" title="statement not covered" >            rssFeedSrv.getFeed($scope.feed.feedUrl)</span>
+            .then(<span class="fstat-no" title="function not covered" >function(data){</span>
+<span class="cstat-no" title="statement not covered" >                    $scope.feedChecked = data.feed;</span>
+<span class="cstat-no" title="statement not covered" >                    console.log("checking feeder", $scope.feedChecked);</span>
+<span class="cstat-no" title="statement not covered" >                  if($scope.feedChecked.entries.length &gt;0){</span>
+<span class="cstat-no" title="statement not covered" >                     $scope.feedNotValid = false;</span>
+<span class="cstat-no" title="statement not covered" >                        $scope.feed.feedName = $scope.feedChecked.title;</span>
+<span class="cstat-no" title="statement not covered" >                        $scope.feed.feedDesc = $scope.feedChecked.description;</span>
+<span class="cstat-no" title="statement not covered" >                        $scope.feed.feedLink = $scope.feedChecked.link;</span>
+<span class="cstat-no" title="statement not covered" >                        $scope.feed.feedActive = true;</span>
+                         
+                     }else{
+<span class="cstat-no" title="statement not covered" >                         $scope.feedNotValid = true;</span>
+                     }
+            });
         };
-      
+        // Deletes Actual Feeder from list and BD
+<span class="cstat-no" title="statement not covered" >        $scope.deletefeed = <span class="fstat-no" title="function not covered" >function(){</span></span>
+<span class="cstat-no" title="statement not covered" >            $scope.feederdel = new feedResource(feeder);</span>
+<span class="cstat-no" title="statement not covered" >            $scope.feederdel.$delete();</span>
+<span class="cstat-no" title="statement not covered" >            $scope.cancel();</span>
+        };
+        // Oks To modal and do Save or Update
 <span class="cstat-no" title="statement not covered" >        $scope.ok = <span class="fstat-no" title="function not covered" >function() {</span></span>
 <span class="cstat-no" title="statement not covered" >            $uibModalInstance.close($scope.feed);</span>
         };
-&nbsp;
+        // Close Modal and Dismiss changes
 <span class="cstat-no" title="statement not covered" >        $scope.cancel = <span class="fstat-no" title="function not covered" >function() {</span></span>
 <span class="cstat-no" title="statement not covered" >            $uibModalInstance.dismiss('cancel');</span>
         };
@@ -102,7 +189,7 @@
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jun 27 2016 09:13:18 GMT+0200 (Romance Daylight Time)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jun 28 2016 12:25:51 GMT+0200 (Romance Daylight Time)</div>
 </div>
 <script src="../../../prettify.js"></script>
 <script>

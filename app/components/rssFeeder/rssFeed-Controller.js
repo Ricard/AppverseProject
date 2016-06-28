@@ -19,9 +19,7 @@ app.controller('rssFeedCtrl',
         vm.initialize = function(){
             vm.feedsLst = [];
             vm.data = [];
-            vm.populateFeeder();
-            
- 
+            vm.populateFeeder(); 
         };
         
         //GET LIST OF FEEDERS
@@ -29,7 +27,6 @@ app.controller('rssFeedCtrl',
             feedResource.get().$promise.then(function(data) {
                 vm.feedsLst = data.data;
                 vm.populateData();
-                
             });
         };
         // Recover List of Feeds
@@ -44,7 +41,6 @@ app.controller('rssFeedCtrl',
                             entry.feeder = result.feed.title;
                             entry.publishedDate = new Date(entry.publishedDate);
                             vm.data.push(entry);
-                            
                         }
                         console.log("Totes les entrades", vm.data);
                     });
@@ -61,28 +57,36 @@ app.controller('rssFeedCtrl',
             //vm.modFeed.$save();    
             vm.modFeed.$update();
              vm.data = [];
-             vm.populateData();
-            
-            
+             vm.populateData();  
         }
         
         // Active Select Feeders
         vm.canSelectFeeder = function(){
             if(vm.NotselectFeeder){
                 vm.NotselectFeeder = false;
-                vm.btnSelectText = "Save";
-                
+                vm.btnSelectText = "Save";    
             }else{
                 vm.NotselectFeeder = true;
                 vm.btnSelectText = "Select Actives";
                 vm.initialize();
             }
         };
+        // Login Modal
+        vm.userLogin = function() {
+
+            var modalInstance = $uibModal.open({
+                animation: true,
+                controller: 'userLoginModalCtrl',
+                templateUrl: 'components/rssFeeder/loginTemplate.html',
+            });
+            modalInstance.result.then(function(feed) {
+             // FALTA LA LOGICA   
+             
+            });
+        };
                 
         // Add New Feeder
         vm.addFeeder = function() {
-            // Create a Feeder Object
-            //vm.feedLst.push(feeder);
             var modalInstance = $uibModal.open({
                 animation: true,
                 controller: 'rssFeedModalCtrl',
@@ -103,17 +107,13 @@ app.controller('rssFeedCtrl',
         
         //Modify Feeder Attrs
         vm.modFeeder = function(feeder) {
-            // Create a Feeder Object
-            //vm.feedLst.push(feeder);
-           
             var modalInstance = $uibModal.open({
                 animation: true,
                 controller: 'rssFeedModalCtrl',
                 templateUrl: 'components/rssFeeder/feedAddTemplate.html',
                 resolve:{
                     feeder: feeder
-                }
-                                
+                }                 
             });
             modalInstance.result.then(function(feed) {
                 //vm.feedsLst.push(feed);

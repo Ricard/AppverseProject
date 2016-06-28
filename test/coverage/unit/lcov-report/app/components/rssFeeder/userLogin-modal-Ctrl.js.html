@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for ./app/components/rssFeeder/rssFeed-Service.js</title>
+    <title>Code coverage report for ./app/components/rssFeeder/userLogin-modal-Ctrl.js</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../../prettify.css">
     <link rel="stylesheet" href="../../../base.css">
@@ -13,15 +13,15 @@
 </head>
 <body>
 <div class="header low">
-    <h1>Code coverage report for <span class="entity">./app/components/rssFeeder/rssFeed-Service.js</span></h1>
+    <h1>Code coverage report for <span class="entity">./app/components/rssFeeder/userLogin-modal-Ctrl.js</span></h1>
     <h2>
-        Statements: <span class="metric">0% <small>(0 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">0% <small>(0 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">0% <small>(0 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">0% <small>(0 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">0% <small>(0 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">./app/components/rssFeeder/</a> &#187; rssFeed-Service.js</div>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">./app/components/rssFeeder/</a> &#187; userLogin-modal-Ctrl.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
@@ -44,48 +44,45 @@
 17
 18
 19
-20
-21</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+20</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
 &nbsp;
 <span class="cstat-no" title="statement not covered" >var app = angular.module('RssFeedModule');</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >app.service('rssFeedSrv', <span class="fstat-no" title="function not covered" >function($q, $rootScope){</span></span>
-   
-<span class="cstat-no" title="statement not covered" >        this.getFeed = <span class="fstat-no" title="function not covered" >function(url){</span></span>
-<span class="cstat-no" title="statement not covered" >            var d = $q.defer();</span>
-<span class="cstat-no" title="statement not covered" >            var feed = new google.feeds.Feed(url);</span>
-<span class="cstat-no" title="statement not covered" >            feed.setNumEntries(10);</span>
-<span class="cstat-no" title="statement not covered" >            feed.load(<span class="fstat-no" title="function not covered" >function(result){</span></span>
-<span class="cstat-no" title="statement not covered" >                $rootScope.$apply(d.resolve(result));</span>
-            });
-           // console.log("promise service", d.promise);
-<span class="cstat-no" title="statement not covered" >            return d.promise;</span>
-            
-        }
-    
-});
+<span class="cstat-no" title="statement not covered" >app.controller('userLoginModalCtrl',</span>
+<span class="fstat-no" title="function not covered" >    function($scope, $uibModalInstance) {</span>
+       
 &nbsp;
-&nbsp;</pre></td></tr>
+      
+        
+        
+        // Oks To modal and do Save or Update
+<span class="cstat-no" title="statement not covered" >        $scope.ok = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            $uibModalInstance.close($scope.feed);</span>
+        };
+        // Close Modal and Dismiss changes
+<span class="cstat-no" title="statement not covered" >        $scope.cancel = <span class="fstat-no" title="function not covered" >function() {</span></span>
+<span class="cstat-no" title="statement not covered" >            $uibModalInstance.dismiss('cancel');</span>
+        };
+    });</pre></td></tr>
 </table></pre>
 
 </div>

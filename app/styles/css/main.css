@@ -7503,10 +7503,22 @@ button[ngclipboard] {
   margin: 5px;
   border-radius: 10px;
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.2); }
+  .rssElement a {
+    text-decoration: none; }
+
+.rssElement:hover {
+  background-color: #e1e1e1;
+  border: 2px solid #755353; }
 
 .icon {
   padding: 5px; }
 
 .showArticle {
   margin-bottom: 10px; }
+
+#btnLogin {
+  margin: 15px; }
+
+.modal-body {
+  padding: 30px; }
 /*# sourceMappingURL=main.css.map */
