@@ -79,7 +79,12 @@
                     <a angular-ripple ui-sref="rssFeed"><i class="glyphicon glyphicon-list-alt"></i> RSSFeed</a>
                 </li>
             </ul>
+            
         </div>
+        <span ng-controller="loginController as login" class="pull-right">
+             <button ng-click="rssCtrl.userLogin()" id="btnLogin" class="btn btn-action">
+                 <i class="glyphicon glyphicon-user"></i> LogIn </button>
+        </span>
     </nav>
     <div id="wrapper" class="container-fluid mainview toggled">
         <!-- Sidebar -->
@@ -95,6 +100,9 @@
                 </li>
                 <li data-ng-class="{ active: $state.includes('rssfeed') }">
                     <a angular-ripple="" ui-sref="rssFeed"><i class="glyphicon glyphicon-list-alt"></i> RSSFeed</a>
+                </li>
+                <li data-ng-class="{ active: $state.includes('try') }">
+                    <a angular-ripple="" ui-sref="try"><i class="glyphicon glyphicon-list-alt"></i> Try</a>
                 </li>
             </ul>
             <a href="#menu-toggle" angular-ripple="" class="btn btn-primary menu-toggle" id="menu-toggle">
@@ -145,28 +153,36 @@
     <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="../bower_components/angular-touch/angular-touch.min.js"></script>
     <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <!--<script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-md5/angular-md5.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>-->
     <!-- endbower -->
     <!--EXTERNAL APIS:-->
     <script src="https://www.google.com/jsapi"></script>
     
     <script src="//cdn.backand.net/backand/dist/1.8.2/backand.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-resource.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-md5/0.1.10/angular-md5.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.min.js"></script>
+    
 
     <!-- include: "type": "js", "files": "<%= scripts %>" -->
     <script src="app.js"></script>
     <script src="states/app-states.js"></script>
     <script src="components/rssFeeder/rssFeed-module.js"></script>
     <script src="components/home/home-controller.js"></script>
+    
+    <script src="components/loginFunctions/auth_service.js"></script>
+    <script src="components/loginFunctions/login-services.js"></script>
+    <script src="components/loginFunctions/login-module.js"></script>
+    <script src="components/loginFunctions/userLogin-modal-Ctrl.js"></script>
+    
+    
     <script src="components/rssFeeder/feedElement-directive.js"></script>
     <script src="components/rssFeeder/rssFeed-Controller.js"></script>
     <script src="components/rssFeeder/rssFeed-FeederResource.js"></script>
     <script src="components/rssFeeder/rssFeed-Service.js"></script>
     <script src="components/rssFeeder/rssFeed-modal-Ctrl.js"></script>
-    <script src="components/rssFeeder/userLogin-modal-Ctrl.js"></script>
-    
-    
-    
     <!-- /include -->
     <!-- endbuild -->
 </body>

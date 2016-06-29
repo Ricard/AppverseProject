@@ -1,8 +1,12 @@
 'use strict';
 // API FOR READ RSS FEED AT RRRS BRANCH
-   google.load("feeds", "1");
+   google.load('feeds', '1');
 
-angular.module('RssFeedModule', ['backand'])
+angular.module('RssFeedModule', [
+    'backand',
+
+    
+    ])
 
 .config(function(BackandProvider){
     BackandProvider.setAppName('aedesigndashboard');

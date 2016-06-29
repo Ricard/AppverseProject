@@ -283,11 +283,11 @@
 &nbsp;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >app.controller('rssFeedCtrl',</span>
-<span class="fstat-no" title="function not covered" >    function(rssFeedSrv, $uibModal, feedResource) {</span>
+<span class="fstat-no" title="function not covered" >    function(rssFeedSrv, $uibModal, FeedResource) {</span>
     
 <span class="cstat-no" title="statement not covered" >        var vm = this;</span>
         //Control for edit Feeders
-<span class="cstat-no" title="statement not covered" >        vm.btnSelectText = "Select Actives";</span>
+<span class="cstat-no" title="statement not covered" >        vm.btnSelectText = 'Select Actives';</span>
 <span class="cstat-no" title="statement not covered" >        vm.NotselectFeeder = true;</span>
         // List of Entry Objects o Feeds
 <span class="cstat-no" title="statement not covered" >        vm.data = [];</span>
@@ -303,7 +303,7 @@
         
         //GET LIST OF FEEDERS
 <span class="cstat-no" title="statement not covered" >        vm.populateFeeder = <span class="fstat-no" title="function not covered" >function() {</span></span>
-<span class="cstat-no" title="statement not covered" >            feedResource.get().$promise.then(<span class="fstat-no" title="function not covered" >function(data) {</span></span>
+<span class="cstat-no" title="statement not covered" >            FeedResource.get().$promise.then(<span class="fstat-no" title="function not covered" >function(data) {</span></span>
 <span class="cstat-no" title="statement not covered" >                vm.feedsLst = data.data;</span>
 <span class="cstat-no" title="statement not covered" >                vm.populateData();</span>
             });
@@ -314,39 +314,39 @@
 <span class="cstat-no" title="statement not covered" >                if(vm.feedsLst[i].feedActive){</span>
 <span class="cstat-no" title="statement not covered" >                    rssFeedSrv.getFeed(vm.feedsLst[i].feedUrl)</span>
                     .then(<span class="fstat-no" title="function not covered" >function(result) {</span>
-<span class="cstat-no" title="statement not covered" >                        console.log("Feeder llegit", result);</span>
+<span class="cstat-no" title="statement not covered" >                        console.log('Feeder llegit', result);</span>
 <span class="cstat-no" title="statement not covered" >                        for (var i = 0; i &lt; result.feed.entries.length; i++) {</span>
 <span class="cstat-no" title="statement not covered" >                            var entry = result.feed.entries[i];</span>
 <span class="cstat-no" title="statement not covered" >                            entry.feeder = result.feed.title;</span>
 <span class="cstat-no" title="statement not covered" >                            entry.publishedDate = new Date(entry.publishedDate);</span>
 <span class="cstat-no" title="statement not covered" >                            vm.data.push(entry);</span>
                         }
-<span class="cstat-no" title="statement not covered" >                        console.log("Totes les entrades", vm.data);</span>
+<span class="cstat-no" title="statement not covered" >                        console.log('Totes les entrades', vm.data);</span>
                     });
                 }
-            };
-<span class="cstat-no" title="statement not covered" >            console.log("Tots els Feeders", vm.feedsLst);</span>
-<span class="cstat-no" title="statement not covered" >            console.log("Totes les entrades", vm.data);</span>
+            }
+<span class="cstat-no" title="statement not covered" >            console.log('Tots els Feeders', vm.feedsLst);</span>
+<span class="cstat-no" title="statement not covered" >            console.log('Totes les entrades', vm.data);</span>
         };
         //UpdateActiveFeed
 <span class="cstat-no" title="statement not covered" >        vm.checkActive = <span class="fstat-no" title="function not covered" >function (feed){</span></span>
 <span class="cstat-no" title="statement not covered" >            feed.feedActive = !feed.feedActive;</span>
-<span class="cstat-no" title="statement not covered" >            console.log("feed a modificar", feed);</span>
-<span class="cstat-no" title="statement not covered" >            vm.modFeed = new feedResource(feed);</span>
+<span class="cstat-no" title="statement not covered" >            console.log('feed a modificar', feed);</span>
+<span class="cstat-no" title="statement not covered" >            vm.modFeed = new FeedResource(feed);</span>
             //vm.modFeed.$save();    
 <span class="cstat-no" title="statement not covered" >            vm.modFeed.$update();</span>
 <span class="cstat-no" title="statement not covered" >             vm.data = [];</span>
 <span class="cstat-no" title="statement not covered" >             vm.populateData();  </span>
-        }
+        };
         
         // Active Select Feeders
 <span class="cstat-no" title="statement not covered" >        vm.canSelectFeeder = <span class="fstat-no" title="function not covered" >function(){</span></span>
 <span class="cstat-no" title="statement not covered" >            if(vm.NotselectFeeder){</span>
 <span class="cstat-no" title="statement not covered" >                vm.NotselectFeeder = false;</span>
-<span class="cstat-no" title="statement not covered" >                vm.btnSelectText = "Save";    </span>
+<span class="cstat-no" title="statement not covered" >                vm.btnSelectText = 'Save';    </span>
             }else{
 <span class="cstat-no" title="statement not covered" >                vm.NotselectFeeder = true;</span>
-<span class="cstat-no" title="statement not covered" >                vm.btnSelectText = "Select Actives";</span>
+<span class="cstat-no" title="statement not covered" >                vm.btnSelectText = 'Select Actives';</span>
 <span class="cstat-no" title="statement not covered" >                vm.initialize();</span>
             }
         };
@@ -356,7 +356,7 @@
 <span class="cstat-no" title="statement not covered" >            var modalInstance = $uibModal.open({</span>
                 animation: true,
                 controller: 'userLoginModalCtrl',
-                templateUrl: 'components/rssFeeder/loginTemplate.html',
+                templateUrl: 'components/loginFunctions/loginTemplate.html',
             });
 <span class="cstat-no" title="statement not covered" >            modalInstance.result.then(<span class="fstat-no" title="function not covered" >function(feed) {</span></span>
              // FALTA LA LOGICA   
@@ -376,9 +376,9 @@
             });
 <span class="cstat-no" title="statement not covered" >            modalInstance.result.then(<span class="fstat-no" title="function not covered" >function(feed) {</span></span>
                 //vm.feedsLst.push(feed);
-<span class="cstat-no" title="statement not covered" >                vm.newFeeder = new feedResource(feed);</span>
+<span class="cstat-no" title="statement not covered" >                vm.newFeeder = new FeedResource(feed);</span>
 <span class="cstat-no" title="statement not covered" >                vm.newFeeder.$save(<span class="fstat-no" title="function not covered" >function(error) {</span></span>
-<span class="cstat-no" title="statement not covered" >                    console.log("Error al guardar:", error);</span>
+<span class="cstat-no" title="statement not covered" >                    console.log('Error al guardar:', error);</span>
                 });
 <span class="cstat-no" title="statement not covered" >                vm.initialize();</span>
             });
@@ -396,7 +396,7 @@
             });
 <span class="cstat-no" title="statement not covered" >            modalInstance.result.then(<span class="fstat-no" title="function not covered" >function(feed) {</span></span>
                 //vm.feedsLst.push(feed);
-<span class="cstat-no" title="statement not covered" >                vm.newFeeder = new feedResource(feed);</span>
+<span class="cstat-no" title="statement not covered" >                vm.newFeeder = new FeedResource(feed);</span>
 <span class="cstat-no" title="statement not covered" >                vm.newFeeder.$update();</span>
 <span class="cstat-no" title="statement not covered" >                vm.initialize();</span>
             });
@@ -408,7 +408,7 @@
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jun 28 2016 12:25:51 GMT+0200 (Romance Daylight Time)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 29 2016 17:01:18 GMT+0200 (Romance Daylight Time)</div>
 </div>
 <script src="../../../prettify.js"></script>
 <script>

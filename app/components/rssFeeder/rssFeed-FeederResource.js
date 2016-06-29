@@ -2,7 +2,7 @@
 
 var app = angular.module('RssFeedModule');
 
-app.factory('feedResource',['Backand','$resource', function(Backand,$resource){
+app.factory('FeedResource',['Backand','$resource', function(Backand,$resource){
    
    
     return $resource(Backand.getApiUrl() + '/1/objects/rssFeeder/:id',{ id: '@id'},{

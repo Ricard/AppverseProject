@@ -4,11 +4,11 @@ var app = angular.module('RssFeedModule');
 
 
 app.controller('rssFeedCtrl',
-    function(rssFeedSrv, $uibModal, feedResource) {
+    function(rssFeedSrv, $uibModal, FeedResource) {
     
         var vm = this;
         //Control for edit Feeders
-        vm.btnSelectText = "Select Actives";
+        vm.btnSelectText = 'Select Actives';
         vm.NotselectFeeder = true;
         // List of Entry Objects o Feeds
         vm.data = [];
@@ -24,7 +24,7 @@ app.controller('rssFeedCtrl',
         
         //GET LIST OF FEEDERS
         vm.populateFeeder = function() {
-            feedResource.get().$promise.then(function(data) {
+            FeedResource.get().$promise.then(function(data) {
                 vm.feedsLst = data.data;
                 vm.populateData();
             });
@@ -35,39 +35,39 @@ app.controller('rssFeedCtrl',
                 if(vm.feedsLst[i].feedActive){
                     rssFeedSrv.getFeed(vm.feedsLst[i].feedUrl)
                     .then(function(result) {
-                        console.log("Feeder llegit", result);
+                        console.log('Feeder llegit', result);
                         for (var i = 0; i < result.feed.entries.length; i++) {
                             var entry = result.feed.entries[i];
                             entry.feeder = result.feed.title;
                             entry.publishedDate = new Date(entry.publishedDate);
                             vm.data.push(entry);
                         }
-                        console.log("Totes les entrades", vm.data);
+                        console.log('Totes les entrades', vm.data);
                     });
                 }
-            };
-            console.log("Tots els Feeders", vm.feedsLst);
-            console.log("Totes les entrades", vm.data);
+            }
+            console.log('Tots els Feeders', vm.feedsLst);
+            console.log('Totes les entrades', vm.data);
         };
         //UpdateActiveFeed
         vm.checkActive = function (feed){
             feed.feedActive = !feed.feedActive;
-            console.log("feed a modificar", feed);
-            vm.modFeed = new feedResource(feed);
+            console.log('feed a modificar', feed);
+            vm.modFeed = new FeedResource(feed);
             //vm.modFeed.$save();    
             vm.modFeed.$update();
              vm.data = [];
              vm.populateData();  
-        }
+        };
         
         // Active Select Feeders
         vm.canSelectFeeder = function(){
             if(vm.NotselectFeeder){
                 vm.NotselectFeeder = false;
-                vm.btnSelectText = "Save";    
+                vm.btnSelectText = 'Save';    
             }else{
                 vm.NotselectFeeder = true;
-                vm.btnSelectText = "Select Actives";
+                vm.btnSelectText = 'Select Actives';
                 vm.initialize();
             }
         };
@@ -77,7 +77,7 @@ app.controller('rssFeedCtrl',
             var modalInstance = $uibModal.open({
                 animation: true,
                 controller: 'userLoginModalCtrl',
-                templateUrl: 'components/rssFeeder/loginTemplate.html',
+                templateUrl: 'components/loginFunctions/loginTemplate.html',
             });
             modalInstance.result.then(function(feed) {
              // FALTA LA LOGICA   
@@ -97,9 +97,9 @@ app.controller('rssFeedCtrl',
             });
             modalInstance.result.then(function(feed) {
                 //vm.feedsLst.push(feed);
-                vm.newFeeder = new feedResource(feed);
+                vm.newFeeder = new FeedResource(feed);
                 vm.newFeeder.$save(function(error) {
-                    console.log("Error al guardar:", error);
+                    console.log('Error al guardar:', error);
                 });
                 vm.initialize();
             });
@@ -117,7 +117,7 @@ app.controller('rssFeedCtrl',
             });
             modalInstance.result.then(function(feed) {
                 //vm.feedsLst.push(feed);
-                vm.newFeeder = new feedResource(feed);
+                vm.newFeeder = new FeedResource(feed);
                 vm.newFeeder.$update();
                 vm.initialize();
             });

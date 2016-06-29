@@ -3,28 +3,28 @@
 var app = angular.module('RssFeedModule');
 
 app.controller('rssFeedModalCtrl',
-    function($scope, $uibModalInstance, feeder, feedResource, rssFeedSrv) {
+    function($scope, $uibModalInstance, feeder, FeedResource, rssFeedSrv) {
        
         $scope.feedNotValid = true;
-        $scope.textTitle = "Add New Feeder: ";
+        $scope.textTitle = 'Add New Feeder: ';
         
         // Check if is a New or Update Feeder
         if(feeder){
             $scope.feedNotValid = false;
             $scope.feed = feeder;
-            $scope.textTitle = "Editar Feeder: ";
+            $scope.textTitle = 'Editar Feeder: ';
         }else{
             $scope.feed = {
-                feedName: "",
-                feedUrl: ""
+                feedName: '',
+                feedUrl: ''
             };
-    };
+    }
         // Check if a New Feeder is Valid before to add them
         $scope.checkfeed = function(){
             rssFeedSrv.getFeed($scope.feed.feedUrl)
             .then(function(data){
                     $scope.feedChecked = data.feed;
-                    console.log("checking feeder", $scope.feedChecked);
+                    console.log('checking feeder', $scope.feedChecked);
                   if($scope.feedChecked.entries.length >0){
                      $scope.feedNotValid = false;
                         $scope.feed.feedName = $scope.feedChecked.title;
@@ -39,7 +39,7 @@ app.controller('rssFeedModalCtrl',
         };
         // Deletes Actual Feeder from list and BD
         $scope.deletefeed = function(){
-            $scope.feederdel = new feedResource(feeder);
+            $scope.feederdel = new FeedResource(feeder);
             $scope.feederdel.$delete();
             $scope.cancel();
         };

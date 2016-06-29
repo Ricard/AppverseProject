@@ -7,5 +7,5 @@ app.directive('rssFeedElement',function(){
         restrict: 'E',
         templateUrl: 'components/rssFeeder/feedElement.html'
         
-    }
+    };
 });

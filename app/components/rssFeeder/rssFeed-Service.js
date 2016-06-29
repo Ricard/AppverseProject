@@ -14,7 +14,7 @@ app.service('rssFeedSrv', function($q, $rootScope){
            // console.log("promise service", d.promise);
             return d.promise;
             
-        }
+        };
     
 });
 

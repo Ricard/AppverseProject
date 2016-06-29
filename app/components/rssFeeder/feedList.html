@@ -1,7 +1,7 @@
 <div class="container-fluid">    
     <div class="col-md-2 rssfeed-sidebar">
         <div class="row text-center">             
-            <button ng-click="rssCtrl.userLogin()" id="btnLogin" class="btn btn-action"><i class="glyphicon glyphicon-user"></i> LogIn </button>
+           
             <h3>Roger Ribes</h3>
         </div>
         <div class="row">
@@ -25,6 +25,7 @@
         </div>
     </div>
     <div class="col-md-10 pull-right">
+        <br>
         <div ng-cloak ng-repeat=" entry in rssCtrl.data | orderBy: '-publishedDate'">
     <rss-feed-element></rss-feed-element>
 </div>        
