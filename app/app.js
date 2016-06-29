@@ -22,7 +22,7 @@
         'App.Controllers',
         'appverse',
         'ngMdIcons',
-        'angular-loading-bar'
+        'angular-loading-bar'   
     ]).run(function ($log, editableOptions) {
         $log.debug('testAlphaApp run');
         editableOptions.theme = 'bs3';

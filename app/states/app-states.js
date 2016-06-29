@@ -4,7 +4,6 @@
 // (invalid urls) to arrangesite navigation     //
 // using ui-router.                             //
 //////////////////////////////////////////////////
-
 'use strict';
 
 angular.module('appverseprojectApp')
@@ -15,18 +14,15 @@ angular.module('appverseprojectApp')
                 ///////////////////////////////
                 // 1-Redirects and Otherwise //
                 ///////////////////////////////
-
                 // Use $urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
                 $urlRouterProvider
-
                 // The `when` method says if the url is ever the 1st param, then redirect to the 2nd param
                 // Here we are just setting up some convenience urls.
                 //                .when('/t?id', '/topics/:id')
                 //                    .when('/t/:id', '/topics/:id')
 
-
                 // If the url is ever invalid, e.g. '/asdf', then redirect to '/' aka the home state
-                    .otherwise('/home');
+                .otherwise('/home');
                 //////////////////////////
                 // 2-State Configurations
                 // Several states hav been configured:
@@ -43,6 +39,30 @@ angular.module('appverseprojectApp')
                   // Use a url of '/' to set a states as the 'index'.
                   url: '/home',
                   templateUrl: 'components/home/home.html'
+                })
+                //////////
+                // Cart //
+                //////////
+                .state('cart', {
+                  // Use a url of '/' to set a states as the 'index'.
+                  url: '/cart',
+                  templateUrl: 'components/cart/cart.html'
+                })
+                ///////////
+                // Stock //
+                ///////////
+                .state('stock', {
+                  // Use a url of '/' to set a states as the 'index'.
+                  url: '/stock',
+                  templateUrl: 'components/stock/stock.html'
+                })
+                //////////
+                // Cart //
+                //////////
+                .state('prueba', {
+                  // Use a url of '/' to set a states as the 'index'.
+                  url: '/prueba',
+                  templateUrl: 'components/stock/prueba.html'
                 })
                 ;
             }]);
