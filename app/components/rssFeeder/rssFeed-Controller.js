@@ -35,24 +35,24 @@ app.controller('rssFeedCtrl',
                 if(vm.feedsLst[i].feedActive){
                     rssFeedSrv.getFeed(vm.feedsLst[i].feedUrl)
                     .then(function(result) {
-                        console.log('Feeder llegit', result);
+                        // console.log('Feeder llegit', result);
                         for (var i = 0; i < result.feed.entries.length; i++) {
                             var entry = result.feed.entries[i];
                             entry.feeder = result.feed.title;
                             entry.publishedDate = new Date(entry.publishedDate);
                             vm.data.push(entry);
                         }
-                        console.log('Totes les entrades', vm.data);
+                        // console.log('Totes les entrades', vm.data);
                     });
                 }
             }
-            console.log('Tots els Feeders', vm.feedsLst);
-            console.log('Totes les entrades', vm.data);
+            // console.log('Tots els Feeders', vm.feedsLst);
+            // console.log('Totes les entrades', vm.data);
         };
         //UpdateActiveFeed
         vm.checkActive = function (feed){
             feed.feedActive = !feed.feedActive;
-            console.log('feed a modificar', feed);
+            // console.log('feed a modificar', feed);
             vm.modFeed = new FeedResource(feed);
             //vm.modFeed.$save();    
             vm.modFeed.$update();
@@ -99,7 +99,7 @@ app.controller('rssFeedCtrl',
                 //vm.feedsLst.push(feed);
                 vm.newFeeder = new FeedResource(feed);
                 vm.newFeeder.$save(function(error) {
-                    console.log('Error al guardar:', error);
+                    // console.log('Error al guardar:', error);
                 });
                 vm.initialize();
             });

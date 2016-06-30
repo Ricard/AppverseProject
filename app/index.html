@@ -81,9 +81,11 @@
             </ul>
             
         </div>
-        <span ng-controller="loginController as login" class="pull-right">
-             <button ng-click="rssCtrl.userLogin()" id="btnLogin" class="btn btn-action">
+        <span ng-cloak="login.currentUser" ng-controller="loginController as login" class="pull-right">{{login.currentUser.name}}
+             <button ng-hide="login.userLoggedIn"  ng-click="userLogin()" id="btnLogin" class="btn btn-action">
                  <i class="glyphicon glyphicon-user"></i> LogIn </button>
+             <button ng-show="login.userLoggedIn"  ng-click="login.userLogout()" id="btnLogin" class="btn btn-danger">
+                 <i class="glyphicon glyphicon-user"></i> LogOut </button>
         </span>
     </nav>
     <div id="wrapper" class="container-fluid mainview toggled">
@@ -153,9 +155,9 @@
     <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="../bower_components/angular-touch/angular-touch.min.js"></script>
     <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <!--<script src="../bower_components/angular-resource/angular-resource.js"></script>
-    <script src="../bower_components/angular-md5/angular-md5.js"></script>
-    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>-->
+    <!--<script src="../bower_components/angular-resource/angular-resource.js"></script>-->
+    <!--<script src="../bower_components/angular-md5/angular-md5.js"></script>-->
+    <!--<script src="../bower_components/angular-cookies/angular-cookies.js"></script>-->
     <!-- endbower -->
     <!--EXTERNAL APIS:-->
     <script src="https://www.google.com/jsapi"></script>
@@ -169,15 +171,12 @@
     <!-- include: "type": "js", "files": "<%= scripts %>" -->
     <script src="app.js"></script>
     <script src="states/app-states.js"></script>
+    <script src="components/loginFunctions/login-module.js"></script>
     <script src="components/rssFeeder/rssFeed-module.js"></script>
     <script src="components/home/home-controller.js"></script>
-    
     <script src="components/loginFunctions/auth_service.js"></script>
     <script src="components/loginFunctions/login-services.js"></script>
-    <script src="components/loginFunctions/login-module.js"></script>
     <script src="components/loginFunctions/userLogin-modal-Ctrl.js"></script>
-    
-    
     <script src="components/rssFeeder/feedElement-directive.js"></script>
     <script src="components/rssFeeder/rssFeed-Controller.js"></script>
     <script src="components/rssFeeder/rssFeed-FeederResource.js"></script>
