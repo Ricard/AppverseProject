@@ -39,8 +39,8 @@
     AppInit.setConfig({
         environment: {
             'REST_CONFIG': {
-                'BaseUrl': '/api',
-                'RequestSuffix': ''
+                'BaseUrl': '/components/stock',
+                'RequestSuffix': '.json'
             }
         },
         appverseMobile: {},
