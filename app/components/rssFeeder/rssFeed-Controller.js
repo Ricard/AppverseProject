@@ -24,7 +24,11 @@ app.controller('rssFeedCtrl',
         
         //GET LIST OF FEEDERS
         vm.populateFeeder = function() {
-            FeedResource.get().$promise.then(function(data) {
+            vm.filterParams =  {
+                    "fieldName": "users",
+                    "operator": "in",
+                    "value": 2  };
+            FeedResource.get({filter: vm.filterParams}).$promise.then(function(data) {
                 vm.feedsLst = data.data;
                 vm.populateData();
             });

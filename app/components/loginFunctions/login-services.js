@@ -25,7 +25,6 @@ angular.module('RssFeedModule')
                 templateUrl: 'components/loginFunctions/loginTemplate.html',
             });
             modalInstance.result.then(function(user) {
-             // FALTA LA LOGICA   
              console.log('Usuari del Login', user);
              self.signIn(user);
              
