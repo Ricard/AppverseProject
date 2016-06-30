@@ -4,7 +4,7 @@ var app = angular.module('RssFeedModule');
 
 
 app.controller('rssFeedCtrl',
-    function(rssFeedSrv, $uibModal, FeedResource) {
+    function(rssFeedSrv, $uibModal, FeedResource, AuthService) {
     
         var vm = this;
         //Control for edit Feeders
@@ -97,6 +97,7 @@ app.controller('rssFeedCtrl',
             });
             modalInstance.result.then(function(feed) {
                 //vm.feedsLst.push(feed);
+                feed.users = AuthService.currentUser.details ? AuthService.currentUser.details.id : '';
                 vm.newFeeder = new FeedResource(feed);
                 vm.newFeeder.$save(function(error) {
                     // console.log('Error al guardar:', error);
