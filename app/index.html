@@ -75,11 +75,14 @@
                 <li data-ng-class="{ active: $state.includes('home') }">
                     <a angular-ripple ui-sref="home"><i class="glyphicon glyphicon-home"></i> Home</a>
                 </li>
-                <li data-ng-class="{ active: $state.includes('stock') }">
-                    <a angular-ripple="" ui-sref="stock"><i class="glyphicon glyphicon-cutlery"></i> Stock</a>
+                <li data-ng-class="{ active: $state.includes('purchase') }">
+                    <a angular-ripple="" ui-sref="purchase"><i class="glyphicon glyphicon-cutlery"></i> Purchase</a>
                 </li>
                 <li data-ng-class="{ active: $state.includes('cart') }">
                     <a angular-ripple="" ui-sref="cart"><i class="glyphicon glyphicon-shopping-cart"></i> Cart</a>
+                </li>
+                <li data-ng-class="{ active: $state.includes('stock') }">
+                    <a angular-ripple="" ui-sref="stock"><i class="glyphicon glyphicon-wrench"></i> Stock</a>
                 </li>
             </ul>
         </div>
@@ -96,14 +99,14 @@
                 <li data-ng-class="{ active: $state.includes('home') }">
                     <a angular-ripple="" ui-sref="home"><i class="glyphicon glyphicon-home"></i> Home</a>
                 </li>
-                <li data-ng-class="{ active: $state.includes('stock') }">
-                    <a angular-ripple="" ui-sref="stock"><i class="glyphicon glyphicon-cutlery"></i> Stock</a>
+                <li data-ng-class="{ active: $state.includes('purchase') }">
+                    <a angular-ripple="" ui-sref="purchase"><i class="glyphicon glyphicon-cutlery"></i> Purchase</a>
                 </li>
                 <li data-ng-class="{ active: $state.includes('cart')}">
                     <a angular-ripple="" ui-sref="cart"><i class="glyphicon glyphicon-shopping-cart"></i> Cart</a>
                 </li>
-                <li data-ng-class="{ active: $state.includes('prueba')}">
-                    <a angular-ripple="" ui-sref="prueba"><i class="glyphicon glyphicon-wrench"></i> prueba</a>
+                <li data-ng-class="{ active: $state.includes('stock')}">
+                    <a angular-ripple="" ui-sref="stock"><i class="glyphicon glyphicon-wrench"></i> Stock</a>
                 </li>
             </ul>
             <a href="#menu-toggle" angular-ripple="" class="btn btn-primary menu-toggle" id="menu-toggle">
@@ -159,7 +162,6 @@
     <script src="app.js"></script>
     <script src="states/app-states.js"></script>
     <script src="components/cart/cart-controller.js"></script>
-    <script src="components/cart/cart-list.js"></script>
     <script src="components/home/home-controller.js"></script>
     <script src="components/stock/stock.js"></script>
     <!-- /include -->

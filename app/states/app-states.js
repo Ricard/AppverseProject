@@ -51,18 +51,18 @@ angular.module('appverseprojectApp')
                 ///////////
                 // Stock //
                 ///////////
-                .state('stock', {
+                .state('purchase', {
                   // Use a url of '/' to set a states as the 'index'.
-                  url: '/stock',
-                  templateUrl: 'components/stock/stock.html'
+                  url: '/purchase',
+                  templateUrl: 'components/purchase/purchase.html'
                 })
                 //////////
                 // Cart //
                 //////////
-                .state('prueba', {
+                .state('stock', {
                   // Use a url of '/' to set a states as the 'index'.
-                  url: '/prueba',
-                  templateUrl: 'components/stock/prueba.html'
+                  url: '/stock',
+                  templateUrl: 'components/stock/stock.html'
                 })
                 ;
             }]);

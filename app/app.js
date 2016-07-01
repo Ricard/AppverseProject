@@ -2,6 +2,7 @@
     'use strict';
     agGrid.initialiseAgGridWithAngular1(angular);
     angular.module('App.Controllers', []);
+    angular.module('App.Services', []);
     angular.module('appverseprojectApp', [
         'appverse.translate',
         'appverse.rest',
@@ -22,7 +23,8 @@
         'App.Controllers',
         'appverse',
         'ngMdIcons',
-        'angular-loading-bar'   
+        'angular-loading-bar',
+        'App.Services'
     ]).run(function ($log, editableOptions) {
         $log.debug('testAlphaApp run');
         editableOptions.theme = 'bs3';
