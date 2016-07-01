@@ -1,14 +1,27 @@
 'use strict';
 
     var app = angular.module('RssFeedModule');
-       app.service('AuthService', ['$http', '$cookieStore', 'Backand', AuthService]);
+       app.service('AuthService', ['$http', '$cookieStore', 'Backand','$q', AuthService]);
 
-    function AuthService($http, $cookieStore, Backand) {
+    function AuthService($http, $cookieStore, Backand,$q) {
 
         var self = this;
         var baseUrl = Backand.getApiUrl() + '/1/objects/';
         self.appName = '';
         self.currentUser = {};
+        
+        
+        // Making a Promise to Resolve Rssfeed before to Load.
+        self.getCurrentUser = function(){
+            var d = $q.defer();
+            getCurrentUserInfo()
+                    .then(function (data) {
+                        self.currentUser.details = data;
+                        d.resolve(self.currentUser);
+                        
+                    });
+                    return d.promise;
+        };
 
         loadUserDetails();
 

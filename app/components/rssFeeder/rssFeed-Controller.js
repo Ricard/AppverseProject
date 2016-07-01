@@ -127,6 +127,11 @@ app.controller('rssFeedCtrl',
                 vm.initialize();
             });
         };
-        
+        vm.testUser;
+        AuthService.getCurrentUser().then(function(user){
+            vm.testUser = user;
+            console.log('Usuari per Promise from service', vm.testUser);
+        });
         vm.initialize();
+        
     });
