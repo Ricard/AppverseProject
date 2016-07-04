@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="PhantomJS 2.1.1 (Windows 7 0.0.0)" package="" timestamp="2016-07-04T15:03:16" id="0" hostname="PCLLE125" tests="0" errors="1" failures="0" time="0">
+    <properties>
+      <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1"/>
+    </properties>
+    <system-out><![CDATA[PhantomJS 2.1.1 (Windows 7 0.0.0) ERROR
+  Error: Bootstrap's JavaScript requires jQuery version 1.9.1 or higher, but lower than version 3
+  at C:/Users/JIIA/AppverseProject/app/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js:6
+
+]]></system-out>
+    <system-err/>
+  </testsuite>
+</testsuites>
