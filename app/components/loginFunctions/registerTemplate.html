@@ -3,32 +3,49 @@
 </div>
 <div class="modal-body login-modal">
     <form name="register" ng-submit="login()" role="form">
-        <div class="form-group">
+       
+          <div class="form-group" ng-class="{'has-success has-feedback': register.username.$valid, 'has-error has-feedback': register.username.$invalid}">
             <label class="form-control-label" for="username">Username</label>
-            <input class="form-control" type="email" name="username" id="username" ng-model="userRegister.username" />
+            <input class="form-control" type="email" name="username" id="username" ng-model="login.userRegister.username" required />
+            <span ng-show="register.username.$valid && register.username.$dirty" class="form-control-feedback ng-scope glyphicon glyphicon-ok"></span>
+            <span ng-show="register.username.$invalid && register.username.$dirty" class="form-control-feedback ng-scope glyphicon glyphicon-remove"></span>
+            <span ng-show="register.username.$dirty && register.username.$invalid" class="text-danger">Email No es correcto</span>
+            
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-class="{'has-success has-feedback': register.firstname.$valid, 'has-error has-feedback': register.firstname.$invalid}">
             <label class="form-control-label" for="username">Firstname</label>
-            <input class="form-control" type="text" name="username" id="username" ng-model="userRegister.firstname" />
+            <input class="form-control" type="text" name="firstname" id="firstname" ng-model="login.userRegister.firstname" required />
+            <span ng-show="register.firstname.$valid && register.firstname.$dirty" class="form-control-feedback ng-scope glyphicon glyphicon-ok"></span>
+            <span ng-show="register.firstname.$invalid && register.firstname.$dirty" class="form-control-feedback ng-scope glyphicon glyphicon-remove"></span>
+            <span ng-show="register.firstname.$dirty && register.firstname.$invalid" class="text-danger">Debe Especificar un Nombre</span>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-class="{'has-success has-feedback': register.lastname.$valid, 'has-error has-feedback': register.lastname.$invalid}">
             <label class="form-control-label" for="username">Lastname</label>
-            <input class="form-control" type="text" name="username" id="username" ng-model="userRegister.lastname" />
+            <input class="form-control" type="text" name="lastname" id="lastname" ng-model="login.userRegister.lastname" required/>
+            <span ng-show="register.lastname.$valid && register.lastname.$dirty" class="form-control-feedback ng-scope glyphicon glyphicon-ok"></span>
+            <span ng-show="register.lastname.$invalid && register.lastname.$dirty" class="form-control-feedback ng-scope glyphicon glyphicon-remove"></span>
+            <span ng-show="register.lastname.$dirty && register.lastname.$invalid" class="text-danger">Debe Especificar un Apellido</span>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-class="{'has-success has-feedback': register.password.$valid, 'has-error has-feedback': register.password.$invalid}">
             <label class="form-control-label" for="password">Password</label>
-            <input class="form-control" type="password" name="password" id="password" ng-model="userRegister.password " />
+            <input class="form-control" type="password" name="password" id="password" ng-model="login.userRegister.password " required/>
+            <span ng-show="register.password.$valid && register.password.$dirty" class="form-control-feedback ng-scope glyphicon glyphicon-ok"></span>
+            <span ng-show="register.password.$invalid && register.password.$dirty" class="form-control-feedback ng-scope glyphicon glyphicon-remove"></span>
+            <span ng-show="register.password.$dirty && register.password.$invalid" class="text-danger">Introduzca una Contraseña</span>
         </div>
-        <div class="form-group">
+        <div class="form-group" ng-class="{'has-success has-feedback': register.cpassword.$valid, 'has-error has-feedback': register.cpassword.$invalid}">
             <label class="form-control-label" for="password"> Confirm Password</label>
-            <input class="form-control" type="password" name="password" id="password" ng-model="userRegister.confirmPassword " />
+            <input class="form-control" type="password" name="cpassword" id="cpassword" ng-model="login.userRegister.confirmPassword " required/>
+            <span ng-show="register.cpassword.$valid && register.cpassword.$dirty" class="form-control-feedback ng-scope glyphicon glyphicon-ok"></span>
+            <span ng-show="register.cpassword.$invalid && register.cpassword.$dirty" class="form-control-feedback ng-scope glyphicon glyphicon-remove"></span>
+            <span ng-show="register.cpassword.$dirty && register.cpassword.$invalid" class="text-danger">Repita la Contraseña</span>
         </div>
       
 </div>
 
 <div class="modal-footer ">
     <button angular-ripple class="btn btn-default " ng-click="cancel() ">Cancel</button>
-    <button angular-ripple class="btn btn-primary " ng-click="ok() ">Enter</button>
+    <button ng-disabled="!register.$valid" angular-ripple class="btn btn-primary " ng-click="register.$valid && ok() ">Enter</button>
     </form>
 </div>
 <div class="modal-body">

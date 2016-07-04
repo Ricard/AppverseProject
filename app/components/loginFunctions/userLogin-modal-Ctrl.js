@@ -25,7 +25,8 @@ app.controller('userLoginModalCtrl',
            
                 AuthService.socialSignIn(provider.name)
                     .then(function(){
-                        $scope.cancel();
+                      //  $scope.cancel();
+                      $uibModalInstance.dismiss('social');
                         $state.go('rssFeed');
                     });
         };

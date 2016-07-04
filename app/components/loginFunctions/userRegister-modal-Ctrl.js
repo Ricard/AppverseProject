@@ -4,14 +4,17 @@ var app = angular.module('RssFeedModule');
 
 app.controller('userRegisterModalCtrl',
     function($scope, $uibModalInstance, AuthService, $state) {
-    
-        $scope.userLogin = {};
         var self = this;
-        self.socialProviders = AuthService.getSocialProviders();
+        self.userRegister = {};
+        $scope.username;
+        
+        
+        
+       self.socialProviders = AuthService.getSocialProviders();
         
         // Oks To modal and do Save or Update
         $scope.ok = function() {
-            $uibModalInstance.close($scope.userLogin);
+            $uibModalInstance.close(self.userRegister);
         };
         // Close Modal and Dismiss changes
         $scope.cancel = function() {
@@ -20,12 +23,11 @@ app.controller('userRegisterModalCtrl',
             
         };
         
-        self.socialSignIn = function (provider) {
-           
-                AuthService.socialSignIn(provider.name)
-                    .then(function(){
-                        $scope.cancel();
-                        $state.go('rssFeed');
-                    });
+        self.socialSignUp = function (provider) {
+            AuthService.socialSignUp(provider.name)
+            .then($uibModalInstance.dismiss('social'));
+               
+                      
+                    
         };
     });

@@ -64,7 +64,7 @@ angular.module('appverseprojectApp')
                 controller: 'userLoginModalCtrl as login',
                 templateUrl: 'components/loginFunctions/loginTemplate.html',
                 resolve: {
-                  socialProviders: AuthService.getSocialProviders()
+                //  socialProviders: AuthService.getSocialProviders()
                 }
               }).result.then(function(userlogin){
                 console.log('Login from state????');
@@ -73,9 +73,13 @@ angular.module('appverseprojectApp')
                       $state.go('rssFeed');
                     })
               },
-                  function(){
-                        console.log('cancel from state????');
+                  function(cancel){
+                       // console.log('cancel from state????');
+                       if(cancel == 'social'){
+                         $state.go('rssFeed');
+                       }else{
                         $state.go('home');
+                       }
                     })
             }]
 
@@ -83,50 +87,34 @@ angular.module('appverseprojectApp')
           .state('register', {
             parent: 'home',
             url: '/register',
-            onEnter: ['$state', '$uibModal','AuthService', function($state, $uibModal,$uibModalInstance, AuthService) {
-               //$uibModalInstance.close();
+            onEnter: ['$state', '$uibModal','AuthService', function($state, $uibModal, AuthService) {
+    
               $uibModal.open({
                 animation: true,
                 controller: 'userRegisterModalCtrl as login',
                 templateUrl: 'components/loginFunctions/registerTemplate.html',
                 resolve: {
-                  socialProviders: AuthService.getSocialProviders()
+               //   socialProviders: AuthService.getSocialProviders()
                 }
-              });
+              }).result.then(
+                function(userRegister, username){
+                  AuthService.signUp(userRegister.firstName, userRegister.lastName,
+                     userRegister.username, userRegister.password, AuthService.appName)
+                     .then($state.go('rssFeed')).error(function(error){console.log('error de signup', error)});
+                  console.log('usuari a registrar', userRegister);
+                },
+                function(cancel){
+                   if(cancel == 'social'){
+                         $state.go('rssFeed');
+                       }else{
+                        $state.go('home');
+                       }
+                })
+              
+              ;
             }]
 
           })
-          
-          
-          // .state('buildAgent.delete', {
-          //       parent: 'buildAgent',
-          //       url: '/{id}/delete',
-          //       data: {
-          //           authorities: ['ROLE_USER'],
-          //       },
-          //       onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-          //           $uibModal.open({
-          //               templateUrl: 'components/entities/buildAgent/buildAgent-delete-dialog.html',
-          //               controller: 'BuildAgentDeleteController',
-          //              size: 'md',
-          //               resolve: {
-          //                   entity: ['BuildAgent', function(BuildAgent) {
-          //                       return BuildAgent.get({id : $stateParams.id});
-          //                   }]
-          //               }
-          //           }).result.then(function(result) {
-          //               $state.go('buildAgent', null, { reload: true });
-          //           }, function() {
-          //               $state.go('^');
-          //           })
-          //       }]
-          //   });
-
-          
-          
-          
-          
-          
           
           ;
       }
