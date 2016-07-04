@@ -4,7 +4,7 @@ var app = angular.module('RssFeedModule');
 
 
 app.controller('rssFeedCtrl',
-    function(rssFeedSrv, $uibModal, FeedResource, AuthService) {
+    function(rssFeedSrv, $uibModal, FeedResource, AuthService, loggedUser) {
     
         var vm = this;
         //Control for edit Feeders
@@ -14,6 +14,9 @@ app.controller('rssFeedCtrl',
         vm.data = [];
         // List of Feeds
         vm.feedsLst = [];
+        
+        vm.loggedUser = loggedUser;
+        vm.loggedId = vm.loggedUser.details.id;
 
         // INITIALIZE RSS FEEDERS
         vm.initialize = function(){
@@ -27,7 +30,7 @@ app.controller('rssFeedCtrl',
             vm.filterParams =  {
                     "fieldName": "users",
                     "operator": "in",
-                    "value": 2  };
+                    "value": vm.loggedId  };
             FeedResource.get({filter: vm.filterParams}).$promise.then(function(data) {
                 vm.feedsLst = data.data;
                 vm.populateData();
@@ -75,19 +78,19 @@ app.controller('rssFeedCtrl',
                 vm.initialize();
             }
         };
-        // Login Modal
-        vm.userLogin = function() {
+        // // Login Modal
+        // vm.userLogin = function() {
 
-            var modalInstance = $uibModal.open({
-                animation: true,
-                controller: 'userLoginModalCtrl',
-                templateUrl: 'components/loginFunctions/loginTemplate.html',
-            });
-            modalInstance.result.then(function(feed) {
-             // FALTA LA LOGICA   
+        //     var modalInstance = $uibModal.open({
+        //         animation: true,
+        //         controller: 'userLoginModalCtrl',
+        //         templateUrl: 'components/loginFunctions/loginTemplate.html',
+        //     });
+        //     modalInstance.result.then(function(feed) {
+        //      // FALTA LA LOGICA   
              
-            });
-        };
+        //     });
+        // };
                 
         // Add New Feeder
         vm.addFeeder = function() {

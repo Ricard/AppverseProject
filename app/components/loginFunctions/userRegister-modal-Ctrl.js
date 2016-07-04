@@ -2,8 +2,8 @@
 
 var app = angular.module('RssFeedModule');
 
-app.controller('userLoginModalCtrl',
-    function($scope, $uibModalInstance, AuthService, $state ) {
+app.controller('userRegisterModalCtrl',
+    function($scope, $uibModalInstance, AuthService, $state) {
     
         $scope.userLogin = {};
         var self = this;
@@ -15,10 +15,9 @@ app.controller('userLoginModalCtrl',
         };
         // Close Modal and Dismiss changes
         $scope.cancel = function() {
-             console.log('cancel del modal en seu ctrl');
+            
             $uibModalInstance.dismiss('cancel');
-           
-     //  $state.go('home');
+            
         };
         
         self.socialSignIn = function (provider) {
@@ -29,5 +28,4 @@ app.controller('userLoginModalCtrl',
                         $state.go('rssFeed');
                     });
         };
-        
     });

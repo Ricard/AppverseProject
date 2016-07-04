@@ -34,6 +34,7 @@ app.controller('rssFeedModalCtrl',
                          
                      }else{
                          $scope.feedNotValid = true;
+                         $scope.feed = {};
                      }
             });
         };

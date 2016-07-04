@@ -82,8 +82,8 @@
             
         </div>
         <span ng-cloak="login.currentUser" ng-controller="loginController as login" class="pull-right">{{login.currentUser.name}}
-             <button ng-hide="login.userLoggedIn"  ng-click="userLogin()" id="btnLogin" class="btn btn-action">
-                 <i class="glyphicon glyphicon-user"></i> LogIn </button>
+             <a ng-hide="login.userLoggedIn"  ui-sref="login" id="btnLogin" class="btn btn-action">
+                 <i class="glyphicon glyphicon-user"></i> LogIn </a>
              <button ng-show="login.userLoggedIn"  ng-click="login.userLogout()" id="btnLogin" class="btn btn-danger">
                  <i class="glyphicon glyphicon-user"></i> LogOut </button>
         </span>
@@ -177,6 +177,7 @@
     <script src="components/loginFunctions/auth_service.js"></script>
     <script src="components/loginFunctions/login-services.js"></script>
     <script src="components/loginFunctions/userLogin-modal-Ctrl.js"></script>
+    <script src="components/loginFunctions/userRegister-modal-Ctrl.js"></script>
     <script src="components/rssFeeder/feedElement-directive.js"></script>
     <script src="components/rssFeeder/rssFeed-Controller.js"></script>
     <script src="components/rssFeeder/rssFeed-FeederResource.js"></script>
