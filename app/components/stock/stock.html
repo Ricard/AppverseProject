@@ -1,0 +1,115 @@
+<div ng-controller="RestNgRepeatController">
+    <uib-alert ng-repeat="error in stocksErrors" type="danger" close="closeAlert($index)">
+        <span ng-bind-html="'Error <b>' + error.status + '</b> with method <b>' + error.config.method + '</b> on <b>' + error.config.data.name + '</b>'"></span>
+    </uib-alert>
+    <div class="form-inline clearfix ng-grid-header">
+        <button angular-ripple class="btn btn-action" av-rest-add="stocks">Add a Product</button>
+
+        <div class="input-group pull-right">
+            <input type="text" class="form-control" placeholder="Filter..." ng-model="filterText">
+            <span class="input-group-addon glyphicon glyphicon-search"></span>
+        </div>
+    </div>
+
+    <form name="stockForm">
+        <table av-rest-get="stocks" class="table table-hover table-condensed">
+        <!-- CORRECTA<table av-rest-get="stocks" class="table table-hover table-condensed">CORRECTA-->
+            <tr class="active">
+                <th style="width:80px">ID</th>
+                <th style="width:26%">Name</th>
+                <th>Snippet</th>
+                <th style="width:80px">Price</th>
+                <th style="width:80px">Quantity</th>
+                <th style="width:175px">Actions</th>
+            </tr>
+            <tr ng-repeat="stock in stocks | filter:filterText">
+                <td>
+                    <div ng-hide="stock.editing">
+                        <p class="form-control-static" ng-bind="stock.id"></p>
+                    </div>
+                    <div ng-if="stock.editing">
+                        <input class="form-control" ng-model="stock.id" type="number" name="id" max="15000" min="0" required>
+                        <span class="text-danger" ng-show="stockForm.id.$error.required && stockForm.id.$dirty">ID is required.</span>
+                        <span class="text-danger" ng-show="stockForm.id.$error.max">Maximum ID is 15000.</span>
+                        <span class="text-danger" ng-show="stockForm.id.$error.min">Minimum ID is 0.</span>
+                    </div>
+                </td>
+                <td>
+                    <div ng-hide="stock.editing">
+                        <p class="form-control-static" ng-bind="stock.name"></p>
+                    </div>
+                    <div ng-if="stock.editing">
+                        <input class="form-control" ng-model="stock.name" name="name" required>
+                        <span class="text-danger" ng-show="stockForm.name.$error.required && stockForm.name.$dirty">Name is required.</span>
+                    </div>
+                </td>
+                <td>
+                    <div ng-hide="stock.editing">
+                        <p class="form-control-static" ng-bind="stock.snippet"></p>
+                    </div>
+                    <div ng-if="stock.editing">
+                        <input class="form-control" ng-model="stock.snippet" name="snippet" required>
+                        <span class="text-danger" ng-show="stockForm.snippet.$error.required && stockForm.snippet.$dirty">Snippet is required.</span>
+                    </div>
+                </td>
+                <td>
+                    <div ng-hide="stock.editing">
+                        <p class="form-control-static" ng-bind="stock.price"></p>
+                    </div>
+                    <div ng-if="stock.editing">
+                        <input class="form-control" ng-model="stock.price" type="number" step="0.1" name="price" max="15000" min="0" required>
+                        <span class="text-danger" ng-show="stockForm.price.$error.required && userForm.price.$dirty">Price is required.</span>
+                        <span class="text-danger" ng-show="stockForm.price.$error.max">Maximum price is 1500€.</span>
+                        <span class="text-danger" ng-show="stockForm.price.$error.min">Minimum price is 0€.</span>
+                    </div>
+                </td>
+                <td>
+                    <div ng-hide="stock.editing">
+                        <p class="form-control-static" ng-bind="stock.quantity"></p>
+                    </div>
+                    <div ng-if="stock.editing">
+                        <input class="form-control" ng-model="stock.quantity" type="number" step="0.1" name="quantity" max="15000" min="0" required>
+                        <span class="text-danger" ng-show="stockForm.quantity.$error.required && userForm.quantity.$dirty">Quantity is required.</span>
+                        <span class="text-danger" ng-show="stockForm.quantity.$error.max">Maximum quantity is 15000€.</span>
+                        <span class="text-danger" ng-show="stockForm.quantity.$error.min">Minimum quantity is 0€.</span>
+                    </div>
+                </td>
+                <td>
+                    <div ng-show="stock.editing && !stock.$saving">
+                        <button av-rest-save="stock" type="button" class="btn btn-primary" ng-disabled="!stockForm.$valid">OK</button>
+                        <button av-rest-cancel="stock" type="button" class="btn btn-default">Cancel</button>
+                    </div>
+
+                    <div ng-hide="stock.editing || stock.$removing || stock.$saving">
+                        <button av-rest-edit="stock" class="btn btn-primary glyphicon glyphicon-pencil"></button>
+                        <button av-rest-clone="stock" class="btn btn-default glyphicon glyphicon-duplicate"></button>
+                        <button av-rest-remove="stock" rest-if="confirmStock(stock)" class="btn btn-danger glyphicon glyphicon-trash"></button>
+                    </div>
+
+                    <div ng-show="stock.$removing">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                Removing...
+                            </div>
+                        </div>
+                    </div>
+
+                    <div ng-show="stock.$saving">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                Saving...
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div ng-show="stockGetting">
+        <div class="progress">
+            <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                Getting Stock...
+            </div>
+        </div>
+    </div>
+</div>
