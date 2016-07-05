@@ -8,9 +8,9 @@ angular.module('App.Controllers')
 
         $scope.greeting = 'Welcome';
     }
-).directive("purchaseList", function() {
+).directive('purchaseList', function() {
     return {
       restrict: 'E',
-      templateUrl: "components/stock/purchase-list.html"
+      templateUrl: 'components/stock/purchase-list.html'
     };
 });

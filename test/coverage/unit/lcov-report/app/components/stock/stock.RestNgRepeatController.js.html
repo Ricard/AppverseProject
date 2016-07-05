@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for ./app/components/cart/cart-controller.js</title>
+    <title>Code coverage report for ./app/components/stock/stock.RestNgRepeatController.js</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="../../../prettify.css">
     <link rel="stylesheet" href="../../../base.css">
@@ -13,15 +13,15 @@
 </head>
 <body>
 <div class="header low">
-    <h1>Code coverage report for <span class="entity">./app/components/cart/cart-controller.js</span></h1>
+    <h1>Code coverage report for <span class="entity">./app/components/stock/stock.RestNgRepeatController.js</span></h1>
     <h2>
-        Statements: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">0% <small>(0 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">0% <small>(0 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">0% <small>(0 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">./app/components/cart/</a> &#187; cart-controller.js</div>
+    <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">./app/components/stock/</a> &#187; stock.RestNgRepeatController.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
@@ -40,7 +40,8 @@
 13
 14
 15
-16</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+16
+17</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -49,28 +50,30 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
 &nbsp;
 <span class="cstat-no" title="statement not covered" >angular.module('App.Controllers')</span>
 &nbsp;
-.controller('cartController',
-<span class="fstat-no" title="function not covered" >    function ($log, $scope) {</span>
-<span class="cstat-no" title="statement not covered" >        $log.debug('cartController loading');</span>
+.controller('RestNgRepeatController',
+<span class="fstat-no" title="function not covered" >    function ($scope, Restangular, $uibModal, $log) {</span>
+<span class="cstat-no" title="statement not covered" >        $log.debug('RestNgRepeatController');</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        $scope.greeting = 'Welcome';</span>
+<span class="cstat-no" title="statement not covered" >        $scope.closeAlert = <span class="fstat-no" title="function not covered" >function (index) {</span></span>
+<span class="cstat-no" title="statement not covered" >            $scope.stocksErrors.splice(index, 1);</span>
+        };
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        $scope.confirmStock = <span class="fstat-no" title="function not covered" >function (stock) {</span></span>
+<span class="cstat-no" title="statement not covered" >            return confirm('Are you sure you want to delete stock ' + stock.name + ' ?');</span>
+        };
     }
-).directive('purchaseList', <span class="fstat-no" title="function not covered" >function() {</span>
-<span class="cstat-no" title="statement not covered" >    return {</span>
-      restrict: 'E',
-      templateUrl: 'components/stock/purchase-list.html'
-    };
-});</pre></td></tr>
+);</pre></td></tr>
 </table></pre>
 
 </div>
