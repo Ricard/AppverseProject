@@ -7,4 +7,5 @@ angular.module('App.Controllers')
         $log.debug('homeController loading');
 
         $scope.greeting = 'Welcome';
-    });
+    }
+);

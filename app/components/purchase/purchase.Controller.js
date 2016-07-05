@@ -2,9 +2,9 @@
 
 angular.module('App.Controllers')
 
-.controller('homeController',
+.controller('purchaseController',
     function ($log, $scope) {
-        $log.debug('homeController loading');
+        $log.debug('purchaseController loading');
 
         $scope.greeting = 'Welcome';
     });
