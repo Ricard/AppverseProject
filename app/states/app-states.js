@@ -68,7 +68,7 @@ angular.module('appverseprojectApp')
                 }
               }).result.then(function(userlogin){
                 console.log('Login from state????');
-                  AuthService.signIn(userlogin.username, userlogin.password, self.appName).then(
+                  AuthService.signIn(userlogin.username, userlogin.password, 'aedesigndashboard').then(
                     function(){
                       $state.go('rssFeed');
                     })
@@ -99,8 +99,8 @@ angular.module('appverseprojectApp')
               }).result.then(
                 function(userRegister, username){
                   AuthService.signUp(userRegister.firstName, userRegister.lastName,
-                     userRegister.username, userRegister.password, AuthService.appName)
-                     .then($state.go('rssFeed')).error(function(error){console.log('error de signup', error)});
+                     userRegister.username, userRegister.password, 'aedesigndashboard')
+                     .then($state.go('rssFeed'));
                   console.log('usuari a registrar', userRegister);
                 },
                 function(cancel){

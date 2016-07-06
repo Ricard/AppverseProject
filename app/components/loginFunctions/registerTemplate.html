@@ -53,7 +53,7 @@
         <a class="btn btn-block btn-social" 
             ng-repeat="(providerKey, providerDetails) in login.socialProviders" 
             ng-class="'btn-' + providerDetails.name" 
-            ng-click="login.socialSignIn(providerDetails)">
+            ng-click="login.socialSignUp(providerDetails)">
             <i class="fa" ng-class="'fa-' + providerDetails.css"></i> {{providerDetails.label}}
         </a>
     </div>

@@ -10,6 +10,6 @@ angular.module('RssFeedModule', [
 
 .config(function(BackandProvider){
     BackandProvider.setAppName('aedesigndashboard');
-    BackandProvider.setSignUpToken('16540fad-8deb-4cd1-a15c-24f3e88e1727');
+    BackandProvider.setSignUpToken('f990375e-6128-4f10-9211-a88d22b7800f');
     BackandProvider.setAnonymousToken('922d5c01-b0b7-45cf-a4a6-ce988b3f3321');
 });

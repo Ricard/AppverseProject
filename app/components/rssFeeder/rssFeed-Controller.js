@@ -17,6 +17,7 @@ app.controller('rssFeedCtrl',
         
         vm.loggedUser = loggedUser;
         vm.loggedId = vm.loggedUser.details.id;
+        console.log('id de loggedUser', vm.loggedId);
 
         // INITIALIZE RSS FEEDERS
         vm.initialize = function(){
@@ -30,7 +31,8 @@ app.controller('rssFeedCtrl',
             vm.filterParams =  {
                     "fieldName": "users",
                     "operator": "in",
-                    "value": vm.loggedId  };
+                    "value": vm.loggedId
+                  };
             FeedResource.get({filter: vm.filterParams}).$promise.then(function(data) {
                 vm.feedsLst = data.data;
                 vm.populateData();
@@ -42,14 +44,14 @@ app.controller('rssFeedCtrl',
                 if(vm.feedsLst[i].feedActive){
                     rssFeedSrv.getFeed(vm.feedsLst[i].feedUrl)
                     .then(function(result) {
-                        // console.log('Feeder llegit', result);
+                     //    console.log('Feeder llegit', result);
                         for (var i = 0; i < result.feed.entries.length; i++) {
                             var entry = result.feed.entries[i];
                             entry.feeder = result.feed.title;
                             entry.publishedDate = new Date(entry.publishedDate);
                             vm.data.push(entry);
                         }
-                        // console.log('Totes les entrades', vm.data);
+                      //   console.log('Totes les entrades', vm.data);
                     });
                 }
             }
