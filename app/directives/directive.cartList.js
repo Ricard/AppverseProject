@@ -2,11 +2,11 @@
 
 angular.module('App.Controllers')
 
-.directive('stockList', 
+.directive('cartList', 
 	function() {
 	    return {
 	      restrict: 'E',
-	      templateUrl: 'components/stock/stock-list.html'
+	      templateUrl: 'components/cart/cart-list.html'
 	    };
 	}
 );

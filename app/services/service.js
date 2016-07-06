@@ -2,12 +2,12 @@
 
 angular.module('App.Services')
 	.service('listService', function(){
-		var list = [];
-		var addToList = function (id) {
-			list.push(id);
+		this.list = [];
+		this.addToList = function (id) {
+			this.list.push(id);
 			}
-		var getList = function () {
-			return list;
+		this.getList = function () {
+			return this.list;
 			}
 		}
 	);

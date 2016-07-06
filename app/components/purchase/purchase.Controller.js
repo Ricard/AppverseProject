@@ -13,9 +13,8 @@ angular.module('App.Controllers')
         	console.log('data llegida', $scope.stocks);
     	});
         $scope.addToCart = function(id){
-        	$scope.addToList = listService.addToList(id);
+            listService.addToList(id);
             console.log('Hem afegit el producte ', id);
-            console.log('Lista', list);
         };
 	}
 );
