@@ -12,9 +12,9 @@ angular.module('App.Controllers')
         	$scope.stocks = data.data;
         	console.log('data llegida', $scope.stocks);
     	});
-        $scope.getCart = function(id){
+        $scope.getCart = function(){
             var list = listService.getList();
-            console.log(list)
+            console.log(list);
         };
 	}
 );
