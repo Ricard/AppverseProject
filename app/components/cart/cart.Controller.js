@@ -6,11 +6,20 @@ angular.module('App.Controllers')
     function ($log, $scope, $http, listService) {
         $log.debug('cartController loading');
         var self = this;
+        $scope.empty= false;
         self.greeting = 'Welcome';
 
         $scope.getCart = function(){
             self.list = listService.getList();
             console.log('Lista Cargada');
+        };
+
+        $scope.getCart();
+
+        if(self.list >= 0){
+            $scope.empty= true;
+        } else{
+            $scope.empty= false;
         };
 
         $scope.removePurchase = function(id){
@@ -19,9 +28,14 @@ angular.module('App.Controllers')
 
         $scope.removeCart = function(){
             self.list = listService.removeList();
+            if(self.list >= 0){
+                $scope.empty= true;
+            } else{
+                $scope.empty= false;
+            };
             console.log('Lista Borrada');
         };
         
-        $scope.getCart();
+
 	}
 );

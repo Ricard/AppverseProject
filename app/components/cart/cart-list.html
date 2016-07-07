@@ -1,12 +1,17 @@
-<div>
-	<a angular-ripple class="btn btn-danger" ng-click="removeCart()">Remove Cart</a>
+<div class="text-center" ng-show="empty">
+	<p>YOUR CART IS EMPTY!! HURRY UP!! PURCHASE A PRODUCT!! OR I KILL YOU!! :@</p>
+	<br><br><br><br><br>
 </div>
-<div class="text-center">
-  <p>¡¡PONER LISTADO STOCK!!</p>
-  <div ng-repeat="cart in cart.list track by $index">
-	<img ng-src="{{cart.imageUrl}}"/>
-    <p>{{cart.name}}</p>
-    <p>{{cart.snippet}}</p>
-    <p></p>
-    </div>
+<div ng-show="!empty">
+	<a angular-ripple class="btn btn-danger" ng-click="removeCart()">Remove Cart</a>
+	<div class="text-center">
+	  	<div ng-repeat="cart in cart.list track by $index">
+	    	<table class="table table-hover table-condensed">
+	    		<tr>
+	    			<th>{{cart.name}}</th>
+	    			<th>{{cart.price}}</th>
+	    		</tr>
+	    	</table>
+	    </div>
+	</div>
 </div>
