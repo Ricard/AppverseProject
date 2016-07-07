@@ -1,11 +1,12 @@
+<div>
+	<a angular-ripple class="btn btn-danger" ng-click="removeCart()">Remove Cart</a>
+</div>
 <div class="text-center">
   <p>¡¡PONER LISTADO STOCK!!</p>
   <div ng-repeat="cart in cart.list track by $index">
-  	{{cart}}
-<!--<img ng-src="{{stock.imageUrl}}"/>
-    <p>{{stock.name}}</p>
-    <p>{{stock.snippet}}</p>
+	<img ng-src="{{cart.imageUrl}}"/>
+    <p>{{cart.name}}</p>
+    <p>{{cart.snippet}}</p>
     <p></p>
--->
-  </div>
+    </div>
 </div>

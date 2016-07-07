@@ -8,14 +8,20 @@ angular.module('App.Controllers')
         var self = this;
         self.greeting = 'Welcome';
 
-        $http.get('components/stock/stocks.json').then(function(data){
-        	$scope.stocks = data.data;
-        	console.log('data llegida', $scope.stocks);
-    	});
         $scope.getCart = function(){
             self.list = listService.getList();
-            console.log(self.list);
+            console.log('Lista Cargada');
         };
+
+        $scope.removePurchase = function(id){
+            console.log(':D Prueba!')
+        };
+
+        $scope.removeCart = function(){
+            self.list = listService.removeList();
+            console.log('Lista Borrada');
+        };
+        
         $scope.getCart();
 	}
 );

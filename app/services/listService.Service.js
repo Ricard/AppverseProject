@@ -3,11 +3,14 @@
 angular.module('App.Services')
 	.service('listService', function(){
 		this.list = [];
-		this.addToList = function (id) {
-			this.list.push(id);
+		this.addToList = function (stock) {
+			this.list.push(stock);
 			}
 		this.getList = function () {
 			return this.list;
+			}
+		this.removeList = function() {
+			this.list = [];
 			}
 		}
 	);
