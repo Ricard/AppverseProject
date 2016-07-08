@@ -3,15 +3,26 @@
 	<br><br><br><br><br>
 </div>
 <div ng-show="!empty">
-	<a angular-ripple class="btn btn-danger" ng-click="removeCart()">Remove Cart</a>
-	<div class="text-center">
-	  	<div ng-repeat="cart in cart.list track by $index">
-	    	<table class="table table-hover table-condensed">
-	    		<tr>
+	<div class="text-center" ng-hide="cart.$removing">
+		<table class="table table-hover table-condensed">
+				<tr>
+					<th><b>Name</b></th>
+					<th><b>Price</b></th>
+				</tr>
+	    		<tr ng-repeat="cart in cart.list track by $index">
 	    			<th>{{cart.name}}</th>
 	    			<th>{{cart.price}}</th>
 	    		</tr>
-	    	</table>
-	    </div>
+	    		<tr>
+	    			<th></th>
+	    			<th></th>
+	    		</tr>
+	    		<tr>
+	    			<th><b><i>Total</i></b></th>
+	    			<th><b></b></th>
+	    		</tr>
+	    </table>
+	<a angular-ripple class="btn btn-action">Purchase Cart!</a>
+	<a angular-ripple class="btn btn-danger" ng-click="confirmCart(removeCart())">Remove Cart!</a>
 	</div>
 </div>

@@ -35,7 +35,8 @@ angular.module('App.Controllers')
             };
             console.log('Lista Borrada');
         };
-        
-
+        $scope.confirmCart = function () {
+            return confirm('Are you sure you want to delete cart ?');
+        };
 	}
 );
