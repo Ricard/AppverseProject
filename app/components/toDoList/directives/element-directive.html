@@ -1,0 +1,16 @@
+<div class=" todoelement" ng-class="{blockUrgencyHigh: todo.urgency === '1',
+                                    blockUrgencyMedium: todo.urgency === '2',
+                                    blockUrgencyLow: todo.urgency === '3',
+                                    blockCompleted: todo.completed}">
+
+    <h3 class="header text-center" ng-class="{strike: todo.completed}">{{todo.title}}</h3>
+    <label>Categoria: </label> {{todo.category}} <br>
+    <label>Urgencia: </label> {{todo.urgency | tdLUrgencyFilter}}
+    <span class="pull-right" ng-class="{strike: todo.completed}"> 
+        <label ng-class="{strike: todo.completed}">DueDate: </label> 
+            {{todo.dueDate | date: mediumDate}}</span> <br>
+    <a type="button" class="btn btn-primary" ui-sref="toDoDetail({id: todo.id})">
+        <i class="glyphicon glyphicon-search"></i> Ver</a>
+    <a type="button" class="btn btn-success pull-right" ng-click="tdListCtrl.setCompleted(todo)">
+        <i class="glyphicon glyphicon-ok"></i> Completed!</a>
+</div>

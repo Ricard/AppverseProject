@@ -1,0 +1,27 @@
+
+    <div class=" row well">
+        <div class="col-md-4 form-group form-inline  ">
+            <label class="form-control-label" for="sel1">Order By:</label>
+            <select class="form-control" id="sel1" ng-model="tdListCtrl.orderBy">
+                <option>urgency</option>
+                <option>addedOn</option>
+                <option>dueDate</option>
+            </select>
+        </div>
+        <div class="col-md-4 form-group form-inline">
+            <label class="form-control-label" for="">Category:</label>
+            <input class="form-control" type="" name="" ng-model="tdListCtrl.filterBy.category">
+            <i class="glyphicon glyphicon-search"></i>
+        </div>
+        <div class="col-md-4 form-group form-inline">
+            <input ng-model="tdListCtrl.showCompleted" type="checkbox" /> Show Completed
+            <a ng-href="#/toDoDetail/new" class="btn btn-success" type="button"> New</a>
+            <button  ng-click="tdListCtrl.deleteCompleteds()"class="btn btn-danger" type="" ng-disabled="!tdListCtrl.showCompleted"> Remove Completed</button>
+        </div>
+    </div>
+    <div class="col-md-4 toDo-element-item" ng-repeat="todo in tdListCtrl.list
+                             |tdLCompletedFilter: tdListCtrl.showCompleted
+                             |filter: tdListCtrl.filterBy:strict
+                             |orderBy: tdListCtrl.orderBy">
+        <td-element-preview class=""></td-element-preview>
+    </div>

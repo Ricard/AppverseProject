@@ -15,10 +15,10 @@
 <div class="header low">
     <h1>Code coverage report for <span class="entity">./app/app.js</span></h1>
     <h2>
-        Statements: <span class="metric">0% <small>(0 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">0% <small>(0 / 2)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">0% <small>(0 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">0% <small>(0 / 22)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">0% <small>(0 / 27)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 9)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">0% <small>(0 / 27)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">./app/</a> &#187; app.js</div>
@@ -112,7 +112,30 @@
 85
 86
 87
-88</td><td class="line-coverage"><span class="cline-any cline-no">&nbsp;</span>
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111</td><td class="line-coverage"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -145,6 +168,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -154,12 +178,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -228,10 +274,11 @@
         'ngCookies',
         'loginModul',
         'angular-loading-bar',
-        'RssFeedModule'
+        'RssFeedModule',
+        'toDoModule'
 &nbsp;
 &nbsp;
-    ]).run(<span class="fstat-no" title="function not covered" >function($log, editableOptions, $rootScope, $location) {</span>
+    ]).run(<span class="fstat-no" title="function not covered" >function($log, editableOptions, $rootScope, $location, AuthService) {</span>
 <span class="cstat-no" title="statement not covered" >        $log.debug('testAlphaApp run');</span>
 <span class="cstat-no" title="statement not covered" >        editableOptions.theme = 'bs3';</span>
 <span class="cstat-no" title="statement not covered" >        $('#menu-toggle').click(<span class="fstat-no" title="function not covered" >function(e) {</span></span>
@@ -240,14 +287,36 @@
         });
         //
 <span class="cstat-no" title="statement not covered" >        $rootScope.$on('$stateChangeStart', <span class="fstat-no" title="function not covered" >function(ev, to, toParams, from, fromParams) {</span></span>
-<span class="cstat-no" title="statement not covered" >            if (1 === 2) {</span>
-<span class="cstat-no" title="statement not covered" >                            ev.preventDefault(); </span>//abort event propagation
-<span class="cstat-no" title="statement not covered" >                            $location.path('/home'); </span>// Redirects to error page
+<span class="cstat-no" title="statement not covered" >          console.log('CRIDA DE INTERCEPTOR');</span>
+            
+<span class="cstat-no" title="statement not covered" >          AuthService.getCurrentUser().then(<span class="fstat-no" title="function not covered" >function(data){</span></span>
+<span class="cstat-no" title="statement not covered" >              console.log('data from userdata', data)</span>
+             //$rootScope.loggedUserId = data.details.id;
+<span class="cstat-no" title="statement not covered" >                if(to.url != '/home'){</span>
+<span class="cstat-no" title="statement not covered" >                    if(data.details){</span>
+<span class="cstat-no" title="statement not covered" >                console.log('esta en True el ID');</span>
+<span class="cstat-no" title="statement not covered" >                ev.preventDefault(); </span> //abort event propagation
+<span class="cstat-no" title="statement not covered" >                    $location.path(to.url);</span>
+&nbsp;
+                }else{
+&nbsp;
+<span class="cstat-no" title="statement not covered" >                        ev.preventDefault(); </span> //abort event propagation
+<span class="cstat-no" title="statement not covered" >                        $location.path('/login'); </span>
+&nbsp;
+                }
+                }    
+        });
+        
+           
+            
+        //     if (1 === 2) {
+        //                     ev.preventDefault(); //abort event propagation
+        //                     $location.path('/home'); // Redirects to error page
                         
-                    } else {
-<span class="cstat-no" title="statement not covered" >                        ev.preventDefault(); </span>// abort event propagation
-<span class="cstat-no" title="statement not covered" >                        $location.path('/home'); </span>// Redirects back to main page
-                    }
+        //             } else {
+        //                 ev.preventDefault(); // abort event propagation
+        //                 $location.path('/home'); // Redirects back to main page
+        //             }
                 
         });
 &nbsp;
@@ -291,7 +360,7 @@
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jul 06 2016 12:46:25 GMT+0200 (Romance Daylight Time)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jul 08 2016 10:04:40 GMT+0200 (Romance Daylight Time)</div>
 </div>
 <script src="../prettify.js"></script>
 <script>

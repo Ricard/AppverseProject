@@ -40,11 +40,61 @@ angular.module('appverseprojectApp')
         // Home //
         //////////
           .state('home', {
-            // Use a url of '/' to set a states as the 'index'.
-            url: '/home',
-            templateUrl: 'components/home/home.html'
-          })
-          .state('rssFeed', {
+          // Use a url of '/' to set a states as the 'index'.
+          url: '/home',
+          templateUrl: 'components/home/home.html'
+        })
+        //////////////
+        // ToDoList //
+        //////////////
+          .state('toDoList', {
+          // Use a url of '/' to set a states as the 'index'.
+          url: '/toDoList',
+          templateUrl: 'components/toDoList/view/toDoList.html',
+          controller: 'toDoListController as tdListCtrl',
+      
+          resolve: {
+          tdlist: ['toDoResource','AuthService', function(toDoResource, AuthService) {
+            console.log('ENTREM EN RESOLVE TDLIST');
+              var iduser;
+            var temp = AuthService.getCurrentUser().then(function(data){
+                iduser = data.details.id;
+                console.log('id del usuari', iduser);
+                var filterParams = {
+                      "fieldName": "users",
+                      "operator": "in",
+                      "value": iduser
+                      }
+            return toDoResource.get({filter: filterParams});
+            });            
+              return temp;
+            
+            //return toDoService.list;
+          }]
+        }
+        })
+        //////////////////////
+        // ToDo New Element //
+        /////////////////////
+          .state('toDoDetail/new', {
+          // Use a url of '/' to set a states as the 'index'.
+          url: '/toDoDetail/new',
+          templateUrl: 'components/toDoList/view/toDoDetail.html',
+          controller: 'elementController as detailCtrl',
+        })
+        //////////////////////////
+        // ToDo Element Detail //
+        ////////////////////////
+          .state('toDoDetail', {
+          // Use a url of '/' to set a states as the 'index'.
+          url: '/toDoDetail/:id',
+          templateUrl: 'components/toDoList/view/toDoDetail.html',
+          controller: 'elementController as detailCtrl',
+        })
+        ////////////////////
+        // RssFeed /////////
+        ////////////////////
+        .state('rssFeed', {
             url: '/rssFeed',
             templateUrl: 'components/rssFeeder/feedList.html',
             controller: 'rssFeedCtrl as rssCtrl',
@@ -54,68 +104,73 @@ angular.module('appverseprojectApp')
               }]
             }
           })
-         
+          /////////////////
+          // Login Modal //
+          //////////////////
           .state('login', {
-           // parent: 'home',
+            // parent: 'home',
             url: '/login',
-            onEnter: ['$state', '$uibModal','AuthService', function($state, $uibModal, AuthService) {
+            onEnter: ['$state', '$uibModal', 'AuthService', function($state, $uibModal, AuthService) {
               $uibModal.open({
                 animation: true,
                 controller: 'userLoginModalCtrl as login',
                 templateUrl: 'components/loginFunctions/loginTemplate.html',
                 resolve: {
-                //  socialProviders: AuthService.getSocialProviders()
+                  //  socialProviders: AuthService.getSocialProviders()
                 }
-              }).result.then(function(userlogin){
-                console.log('Login from state????');
+              }).result.then(function(userlogin) {
+                  console.log('Login from state????');
                   AuthService.signIn(userlogin.username, userlogin.password, 'aedesigndashboard').then(
-                    function(){
+                    function() {
                       $state.go('rssFeed');
                     })
-              },
-                  function(cancel){
-                       // console.log('cancel from state????');
-                       if(cancel == 'social'){
-                         $state.go('rssFeed');
-                       }else{
-                        $state.go('home');
-                       }
-                    })
+                },
+                function(cancel) {
+                  // console.log('cancel from state????');
+                  if (cancel == 'social') {
+                    $state.go('rssFeed');
+                  } else {
+                    $state.go('home');
+                  }
+                })
             }]
 
           })
+          /////////////////////
+          // Register Modal //
+          ///////////////////
           .state('register', {
             parent: 'home',
             url: '/register',
-            onEnter: ['$state', '$uibModal','AuthService', function($state, $uibModal, AuthService) {
-    
+            onEnter: ['$state', '$uibModal', 'AuthService', function($state, $uibModal, AuthService) {
+
               $uibModal.open({
                 animation: true,
                 controller: 'userRegisterModalCtrl as login',
                 templateUrl: 'components/loginFunctions/registerTemplate.html',
                 resolve: {
-               //   socialProviders: AuthService.getSocialProviders()
+                  //   socialProviders: AuthService.getSocialProviders()
                 }
               }).result.then(
-                function(userRegister, username){
+                function(userRegister, username) {
                   AuthService.signUp(userRegister.firstName, userRegister.lastName,
-                     userRegister.username, userRegister.password, 'aedesigndashboard')
-                     .then($state.go('rssFeed'));
+                      userRegister.username, userRegister.password, AuthService.appName)
+                    .then($state.go('rssFeed'));
                   console.log('usuari a registrar', userRegister);
                 },
-                function(cancel){
-                   if(cancel == 'social'){
-                         $state.go('rssFeed');
-                       }else{
-                        $state.go('home');
-                       }
+                function(cancel) {
+                  if (cancel == 'social') {
+                    $state.go('rssFeed');
+                  } else {
+                    $state.go('home');
+                  }
                 })
-              
+
               ;
             }]
 
           })
-          
-          ;
+
+        ;
       }
     ]);

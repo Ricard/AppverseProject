@@ -27,7 +27,8 @@
         'ngCookies',
         'loginModul',
         'angular-loading-bar',
-        'RssFeedModule'
+        'RssFeedModule',
+        'toDoModule'
 
 
     ]).run(function($log, editableOptions, $rootScope, $location, AuthService) {
@@ -39,8 +40,8 @@
         });
         //
         $rootScope.$on('$stateChangeStart', function(ev, to, toParams, from, fromParams) {
-          
-        
+          console.log('CRIDA DE INTERCEPTOR');
+            
           AuthService.getCurrentUser().then(function(data){
               console.log('data from userdata', data)
              //$rootScope.loggedUserId = data.details.id;
@@ -48,14 +49,12 @@
                     if(data.details){
                 console.log('esta en True el ID');
                 ev.preventDefault();  //abort event propagation
-                    $location.path(to.url); // Redirects to error page
+                    $location.path(to.url);
 
                 }else{
-                    console.log('param To de Function: ', to);
-                    console.log('param from de Function: ', from);
-                    console.log('esta en false el ID');
+
                         ev.preventDefault();  //abort event propagation
-                        $location.path('/login'); // Redirects to error page
+                        $location.path('/login'); 
 
                 }
                 }    
