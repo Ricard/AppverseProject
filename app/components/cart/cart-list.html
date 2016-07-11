@@ -1,15 +1,15 @@
 <div class="text-center" ng-show="empty">
-	<p>YOUR CART IS EMPTY!! HURRY UP!! PURCHASE A PRODUCT!! OR I KILL YOU!! :@</p>
-	<br><br><br><br><br>
+	<h1>YOUR CART IS EMPTY!! HURRY UP!! PURCHASE!! OR I KILL YOU!! :@</h1>
+	<br><br>
 </div>
-<div ng-show="!empty">
+<div >
 	<div class="text-center" ng-hide="cart.$removing">
 		<table class="table table-hover table-condensed">
 				<tr>
 					<th><b>Name</b></th>
 					<th><b>Price</b></th>
 				</tr>
-	    		<tr ng-repeat="cart in cart.list track by $index">
+	    		<tr ng-show="!empty" ng-repeat="cart in cart.list track by $index">
 	    			<th>{{cart.name}}</th>
 	    			<th>{{cart.price}}</th>
 	    		</tr>
@@ -19,10 +19,11 @@
 	    		</tr>
 	    		<tr>
 	    			<th><b><i>Total</i></b></th>
-	    			<th><b>TOTAL PRICE</b></th>
+	    			<th><b><i>{{cart.totalPrice}}</i></b></th>
 	    		</tr>
 	    </table>
-	<a angular-ripple class="btn btn-action">Purchase Cart!</a>
-	<a angular-ripple class="btn btn-danger" ng-click="confirmCart(removeCart())">Remove Cart!</a>
+	<a ng-show="!empty" angular-ripple class="btn btn-action">Purchase Cart!</a>
+	<a ng-show="!empty" angular-ripple class="btn btn-danger" ng-click="confirmCart(removeCart())">Remove Cart!</a>
 	</div>
 </div>
+<br><br><br>
