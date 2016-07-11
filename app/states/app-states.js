@@ -57,7 +57,7 @@ angular.module('appverseprojectApp')
           tdlist: ['toDoResource','AuthService', function(toDoResource, AuthService) {
             console.log('ENTREM EN RESOLVE TDLIST');
               var iduser;
-            var temp = AuthService.getCurrentUser().then(function(data){
+           return AuthService.getCurrentUser().then(function(data){
                 iduser = data.details.id;
                 console.log('id del usuari', iduser);
                 var filterParams = {
@@ -67,9 +67,6 @@ angular.module('appverseprojectApp')
                       }
             return toDoResource.get({filter: filterParams});
             });            
-              return temp;
-            
-            //return toDoService.list;
           }]
         }
         })
