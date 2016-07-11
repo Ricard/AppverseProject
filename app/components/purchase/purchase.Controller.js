@@ -12,6 +12,7 @@ angular.module('App.Controllers')
         	$scope.stocks = data.data;
         	console.log('data llegida', $scope.stocks);
     	});
+        
         $scope.addToCart = function(stock){
             listService.addToList(stock);
             console.log('Hem afegit el producte ', stock);
