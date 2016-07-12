@@ -1,8 +1,7 @@
 <div class="text-center">
-  <p>¡¡PONER LISTADO STOCK!!</p>
   <div ng-repeat="stock in stocks">
     <img ng-src="{{stock.imageUrl}}"/>
-    <p>{{stock.name}} - {{stock.price}} €</p>
+    <p>{{stock.name}} - {{stock.price |currency}}</p>
     <p>{{stock.snippet}}</p>
     <a angular-ripple class="btn btn-success" ng-click="addToCart(stock)"> Add to Cart ..<li class="glyphicon glyphicon-shopping-cart pull-right"></li> </a> 
     <p>---------------------------------------------------------------------</p>

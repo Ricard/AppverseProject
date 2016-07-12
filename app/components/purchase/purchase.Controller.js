@@ -3,7 +3,7 @@
 angular.module('App.Controllers')
 
 .controller('purchaseController',
-    function ($log, $scope, $http, listService) {
+    function ($log, $scope, $http, listService, $translate, tmhDynamicLocale) {
         $log.debug('purchaseController loading');
 
         $scope.greeting = 'Welcome';
@@ -17,5 +17,5 @@ angular.module('App.Controllers')
             listService.addToList(stock);
             console.log('Hem afegit el producte ', stock);
         };
-	}
+    }
 );

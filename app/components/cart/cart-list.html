@@ -11,7 +11,7 @@
 				</tr>
 	    		<tr ng-show="!empty" ng-repeat="cart in cart.list track by $index">
 	    			<th>{{cart.name}}</th>
-	    			<th>{{cart.price}}</th>
+	    			<th>{{cart.price | currency}}</th>
 	    		</tr>
 	    		<tr>
 	    			<th></th>
@@ -19,11 +19,11 @@
 	    		</tr>
 	    		<tr>
 	    			<th><b><i>Total</i></b></th>
-	    			<th><b><i>{{cart.totalPrice}}</i></b></th>
+	    			<th><b><i>{{cart.totalPrice | currency}}</i></b></th>
 	    		</tr>
 	    </table>
 	<a ng-show="!empty" angular-ripple class="btn btn-action">Purchase Cart!</a>
-	<a ng-show="!empty" angular-ripple class="btn btn-danger" ng-click="confirmCart(removeCart())">Remove Cart!</a>
+	<a ng-show="!empty" angular-ripple class="btn btn-danger" ng-click="confirmCart()">Remove Cart!</a>
 	</div>
 </div>
 <br><br><br>

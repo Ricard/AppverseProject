@@ -25,13 +25,16 @@
         'ngMdIcons',
         'angular-loading-bar',
         'App.Services'
-    ]).run(function ($log, editableOptions) {
+    ]).run(function ($log, editableOptions, $translate, tmhDynamicLocale) {
         $log.debug('testAlphaApp run');
         editableOptions.theme = 'bs3';
         $('#menu-toggle').click(function (e) {
             e.preventDefault();
             $('#wrapper').toggleClass('toggled');
         });
+        var locale = 'es-ES';
+        $translate.uses(locale);
+        tmhDynamicLocale.set(locale.toLowerCase());
     }).config([
         'cfpLoadingBarProvider',
         function (cfpLoadingBarProvider) {
