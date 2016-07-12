@@ -6,7 +6,7 @@ app.controller('userRegisterModalCtrl',
     function($scope, $uibModalInstance, AuthService, $state) {
         var self = this;
         self.userRegister = {};
-        $scope.username;
+        $scope.username = {};
         
         
         

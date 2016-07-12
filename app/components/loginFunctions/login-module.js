@@ -2,5 +2,5 @@
 
 angular.module('loginModul', [
     'backand',
-    ])
+    ]);
 

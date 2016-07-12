@@ -1,15 +1,17 @@
-'use strict';
+(function () {
+    'use strict'; 
 var app = angular.module('toDoModule');
 
 app.filter('tdLUrgencyFilter',function(){
     return function(input){
         switch(input){
-            case "1":
+            case '1':
                 return 'High';
-            case "2":
+            case '2':
                 return 'Medium';
-            case "3":
+            case '3':
                 return 'Low';
         }
-    }
+    };
 });
+} ());

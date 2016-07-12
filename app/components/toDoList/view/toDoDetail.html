@@ -20,12 +20,8 @@
             <div class="form-group form-inline">
                 <label class="form-control-label" for="todoUrgency">Urgency: </label>
              
-                <select ng-disabled="detailCtrl.disabled" class="form-control" id="sel2"
-                       placeholder="Urgency" ng-model="detailCtrl.todo.urgency">
-                    <option vaule="1">High</option>
-                    <option value="2">Medium</option>
-                    <option value="3">Low</option>
-            </select>
+                <select ng-disabled="detailCtrl.disabled" class="form-control" ng-options="obj.value as obj.text for obj in detailCtrl.UrgencyOptions"
+                      ng-model="detailCtrl.todo.urgency"></select>
             </div>
         </div>
         <div class="col-xs-4 ">

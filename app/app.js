@@ -39,39 +39,39 @@
             $('#wrapper').toggleClass('toggled');
         });
         //
-        $rootScope.$on('$stateChangeStart', function(ev, to, toParams, from, fromParams) {
-          console.log('CRIDA DE INTERCEPTOR');
+        // $rootScope.$on('$stateChangeStart', function(ev, to, toParams, from, fromParams) {
+        //   console.log('CRIDA DE INTERCEPTOR');
             
-          AuthService.getCurrentUser().then(function(data){
-              console.log('data from userdata', data)
-             //$rootScope.loggedUserId = data.details.id;
-                if(to.url != '/home'){
-                    if(data.details){
-                console.log('esta en True el ID');
-                ev.preventDefault();  //abort event propagation
-                    $location.path(to.url);
+        //   AuthService.getCurrentUser().then(function(data){
+        //       console.log('data from userdata', data)
+        //      //$rootScope.loggedUserId = data.details.id;
+        //         if(to.url != '/home'){
+        //             if(data.details){
+        //         console.log('esta en True el ID');
+        //         ev.preventDefault();  //abort event propagation
+        //             $location.path(to.url);
 
-                }else{
+        //         }else{
 
-                        ev.preventDefault();  //abort event propagation
-                        $location.path('/login'); 
+        //                 ev.preventDefault();  //abort event propagation
+        //                 $location.path('/login'); 
 
-                }
-                }    
-        });
+        //         }
+        //         }    
+        // });
         
            
             
-        //     if (1 === 2) {
-        //                     ev.preventDefault(); //abort event propagation
-        //                     $location.path('/home'); // Redirects to error page
+        // //     if (1 === 2) {
+        // //                     ev.preventDefault(); //abort event propagation
+        // //                     $location.path('/home'); // Redirects to error page
                         
-        //             } else {
-        //                 ev.preventDefault(); // abort event propagation
-        //                 $location.path('/home'); // Redirects back to main page
-        //             }
+        // //             } else {
+        // //                 ev.preventDefault(); // abort event propagation
+        // //                 $location.path('/home'); // Redirects back to main page
+        // //             }
                 
-        });
+        // });
 
     }).config([
         'cfpLoadingBarProvider',

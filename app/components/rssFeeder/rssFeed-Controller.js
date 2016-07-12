@@ -29,9 +29,9 @@ app.controller('rssFeedCtrl',
         //GET LIST OF FEEDERS
         vm.populateFeeder = function() {
             vm.filterParams =  {
-                    "fieldName": "users",
-                    "operator": "in",
-                    "value": vm.loggedId
+                    'fieldName': 'users',
+                    'operator': 'in',
+                    'value': vm.loggedId
                   };
             FeedResource.get({filter: vm.filterParams}).$promise.then(function(data) {
                 vm.feedsLst = data.data;
@@ -132,7 +132,7 @@ app.controller('rssFeedCtrl',
                 vm.initialize();
             });
         };
-        vm.testUser;
+        vm.testUser={};
         AuthService.getCurrentUser().then(function(user){
             vm.testUser = user;
             console.log('Usuari per Promise from service', vm.testUser);

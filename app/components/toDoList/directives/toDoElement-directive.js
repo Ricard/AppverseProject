@@ -1,4 +1,5 @@
-'use strict';
+(function () {
+    'use strict'; 
 var app = angular.module('toDoModule');
 
 app.directive('tdElementPreview', function(){
@@ -7,3 +8,4 @@ app.directive('tdElementPreview', function(){
         templateUrl:'components/toDoList/directives/element-directive.html'
     };
 });
+} ());

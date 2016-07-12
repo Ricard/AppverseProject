@@ -1,4 +1,5 @@
-'use strict';
+(function () {
+    'use strict'; 
 var app = angular.module('toDoModule');
 app.controller('elementController', ['toDoResource', '$stateParams', '$state','$scope',
     function(toDoResource, $stateParams, $state,$scope) {
@@ -6,11 +7,24 @@ app.controller('elementController', ['toDoResource', '$stateParams', '$state','$
     var vm = this;
 
     vm.todo = {};
-    console.log("todoElement: ", vm.todo);
+    console.log('todoElement: ', vm.todo);
     vm.isNew = false;
     vm.disabled = true;
-    vm.btnEdit = "Edit";
-    vm.btnCancel = "Back";
+    vm.btnEdit = 'Edit';
+    vm.btnCancel = 'Back';
+    vm.UrgencyOptions = [
+        {
+          'value': 1,
+          'text': 'High'  
+        },{
+            'value': 2,
+          'text': 'Medium'
+        },{
+            'value': 3,
+          'text': 'Low'
+        }
+        
+    ];
    
 
     // SAVE New ToDo Element
@@ -20,7 +34,7 @@ app.controller('elementController', ['toDoResource', '$stateParams', '$state','$
        // vm.todo.addedOn = new Date();
         //vm.todo.completed = false;
         //vm.todo.dueDate = new Date(vm.todo.dueDate);
-        
+        vm.todo.users = 1;
         vm.newTodo = new toDoResource(vm.todo);
         vm.newTodo.$save();
     };
@@ -44,24 +58,26 @@ app.controller('elementController', ['toDoResource', '$stateParams', '$state','$
 
     // Functions to Control Buttons
     vm.isEditable = function() {
-         if (!vm.disabled){vm.saveOrUpdate();};
-        console.log("todo post form", vm.todo);
+         if (!vm.disabled){
+             vm.saveOrUpdate();
+            }
+        console.log('todo post form', vm.todo);
         vm.disabled = !vm.disabled;
         
         if (!vm.disabled) {
-            vm.btnEdit = "Save";
-            vm.btnCancel = "Cancel";
+            vm.btnEdit = 'Save';
+            vm.btnCancel = 'Cancel';
         } else {
-            vm.btnEdit = "Edit";
-            vm.btnCancel = "Back";
+            vm.btnEdit = 'Edit';
+            vm.btnCancel = 'Back';
         }
     };
     // Controls if is New Element or Edit
     if (!$stateParams.id) {
         vm.isNew = true;
         vm.disabled = false;
-        vm.btnEdit = "Save";
-        vm.btnCancel = "Cancel";
+        vm.btnEdit = 'Save';
+        vm.btnCancel = 'Cancel';
     } else { 
         vm.todo = toDoResource.get({
             id: $stateParams.id
@@ -140,3 +156,4 @@ $scope.getDayClass = function (date, mode) {
 };
 
 }]);
+} ());

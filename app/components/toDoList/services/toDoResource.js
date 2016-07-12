@@ -1,5 +1,5 @@
-'use strict';
-
+(function () {
+    'use strict'; 
 var app = angular.module('toDoModule');
 
 app.factory('toDoResource',['$resource','Backand', function($resource, Backand){
@@ -30,3 +30,5 @@ app.factory('toDoResource',['$resource','Backand', function($resource, Backand){
 *
 *
 */
+} ());
+

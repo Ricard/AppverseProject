@@ -61,10 +61,10 @@ angular.module('appverseprojectApp')
                 iduser = data.details.id;
                 console.log('id del usuari', iduser);
                 var filterParams = {
-                      "fieldName": "users",
-                      "operator": "in",
-                      "value": iduser
-                      }
+                      'fieldName': 'users',
+                      'operator': 'in',
+                      'value': iduser
+                      };
             return toDoResource.get({filter: filterParams});
             });            
           }]
@@ -120,16 +120,16 @@ angular.module('appverseprojectApp')
                   AuthService.signIn(userlogin.username, userlogin.password, 'aedesigndashboard').then(
                     function() {
                       $state.go('rssFeed');
-                    })
+                    });
                 },
                 function(cancel) {
                   // console.log('cancel from state????');
-                  if (cancel == 'social') {
+                  if (cancel === 'social') {
                     $state.go('rssFeed');
                   } else {
                     $state.go('home');
                   }
-                })
+                });
             }]
 
           })
@@ -156,7 +156,7 @@ angular.module('appverseprojectApp')
                   console.log('usuari a registrar', userRegister);
                 },
                 function(cancel) {
-                  if (cancel == 'social') {
+                  if (cancel === 'social') {
                     $state.go('rssFeed');
                   } else {
                     $state.go('home');

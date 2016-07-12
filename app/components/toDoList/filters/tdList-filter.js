@@ -1,5 +1,6 @@
 
-'use strict';
+(function () {
+    'use strict'; 
 var app = angular.module('toDoModule');
 
 app.filter('tdLCompletedFilter', function() {
@@ -19,6 +20,8 @@ app.filter('tdLCompletedFilter', function() {
     return filtered;
   };
 });
+} ());
+
 
 
 

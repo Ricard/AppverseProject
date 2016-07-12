@@ -1,4 +1,5 @@
-'use strict';
+(function () {
+    'use strict'; 
 var app = angular.module('toDoModule');
 
 app.factory('toDoService', ['$http','Backand', function($http, Backand) {
@@ -8,7 +9,7 @@ app.factory('toDoService', ['$http','Backand', function($http, Backand) {
     toDoService.list = [];
     toDoService.listback = [];
     
-    console.log("list on service before Get: ", toDoService.list);
+    console.log('list on service before Get: ', toDoService.list);
     
     
     // BACKAND CALL
@@ -23,15 +24,16 @@ app.factory('toDoService', ['$http','Backand', function($http, Backand) {
                 sort: ''
             }
         }).success(function(data){
-            console.log("Backend Resolve: ", data);
+            console.log('Backend Resolve: ', data);
             angular.copy(data.data, toDoService.list);
-            console.log("list on service after succes: ", toDoService.list);
+            console.log('list on service after succes: ', toDoService.list);
             return data;
         }).error(function( error){
-            console.log("Backend Error: ", error);
+            console.log('Backend Error: ', error);
         });
     };
     toDoService.backq();
-    console.log("list on service : ", toDoService.list);
+    console.log('list on service : ', toDoService.list);
     return toDoService;
 }]);
+} ());
