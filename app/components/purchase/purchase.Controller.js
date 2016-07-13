@@ -8,14 +8,14 @@ angular.module('App.Controllers')
 
         $scope.greeting = 'Welcome';
         
-        //$scope.getStock = function(){
-        //    self.list = stockService.getList();
-        //    console.log('Lista Cargada');
-        //};
-        $http.get('components/BBDDjson/BBDDstocks.json').then(function(data){
-        	$scope.stocks = data.data;
-        	console.log('Stock Cargado', $scope.stocks);
-    	});
+        $scope.getStock = function(){
+            self.list = stockListService.getList();
+            console.log('StockList Cargado');
+        };
+        //$http.get('components/BBDDjson/BBDDstocks.json').then(function(data){
+        //	$scope.stocks = data.data;
+        //	console.log('Stock Cargado', $scope.stocks);
+    	//});
         
         $scope.addToCart = function(stock){
             cartListService.addToList(stock);
