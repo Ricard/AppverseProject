@@ -42,7 +42,8 @@ angular.module('appverseprojectApp')
           .state('home', {
           // Use a url of '/' to set a states as the 'index'.
           url: '/home',
-          templateUrl: 'components/home/home.html'
+          templateUrl: 'components/home/home.html',
+          module: 'public'
         })
         //////////////
         // ToDoList //
@@ -52,6 +53,7 @@ angular.module('appverseprojectApp')
           url: '/toDoList',
           templateUrl: 'components/toDoList/view/toDoList.html',
           controller: 'toDoListController as tdListCtrl',
+          module: 'registered',
       
           resolve: {
           tdlist: ['toDoResource','AuthService', function(toDoResource, AuthService) {
@@ -78,6 +80,7 @@ angular.module('appverseprojectApp')
           url: '/toDoDetail/new',
           templateUrl: 'components/toDoList/view/toDoDetail.html',
           controller: 'elementController as detailCtrl',
+          module: 'registered',
         })
         //////////////////////////
         // ToDo Element Detail //
@@ -87,6 +90,7 @@ angular.module('appverseprojectApp')
           url: '/toDoDetail/:id',
           templateUrl: 'components/toDoList/view/toDoDetail.html',
           controller: 'elementController as detailCtrl',
+          module: 'registered',
         })
         ////////////////////
         // RssFeed /////////
@@ -95,6 +99,7 @@ angular.module('appverseprojectApp')
             url: '/rssFeed',
             templateUrl: 'components/rssFeeder/feedList.html',
             controller: 'rssFeedCtrl as rssCtrl',
+            module: 'registered',
             resolve: {
               loggedUser: ['AuthService', function(AuthService) {
                 return AuthService.getCurrentUser();
@@ -112,6 +117,7 @@ angular.module('appverseprojectApp')
                 animation: true,
                 controller: 'userLoginModalCtrl as login',
                 templateUrl: 'components/loginFunctions/loginTemplate.html',
+                module: 'public',
                 resolve: {
                   //  socialProviders: AuthService.getSocialProviders()
                 }
@@ -139,6 +145,7 @@ angular.module('appverseprojectApp')
           .state('register', {
             parent: 'home',
             url: '/register',
+            module: 'public',
             onEnter: ['$state', '$uibModal', 'AuthService', function($state, $uibModal, AuthService) {
 
               $uibModal.open({
