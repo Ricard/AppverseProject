@@ -15,10 +15,10 @@
 <div class="header low">
     <h1>Code coverage report for <span class="entity">./app/components/cart/cart.Controller.js</span></h1>
     <h2>
-        Statements: <span class="metric">0% <small>(0 / 26)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Branches: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Functions: <span class="metric">0% <small>(0 / 5)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">0% <small>(0 / 26)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">0% <small>(0 / 24)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">0% <small>(0 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">0% <small>(0 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">0% <small>(0 / 24)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../../../index.html">All files</a> &#187; <a href="index.html">./app/components/cart/</a> &#187; cart.Controller.js</div>
@@ -69,7 +69,8 @@
 42
 43
 44
-45</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+45
+46</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -80,30 +81,19 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -111,6 +101,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
@@ -118,43 +120,44 @@
 <span class="cstat-no" title="statement not covered" >angular.module('App.Controllers')</span>
 &nbsp;
 .controller('cartController',
-<span class="fstat-no" title="function not covered" >    function ($log, $scope, $http, listService) {</span>
+<span class="fstat-no" title="function not covered" >    function ($log, $scope, $http, cartListService, $translate, tmhDynamicLocale) {</span>
 <span class="cstat-no" title="statement not covered" >        $log.debug('cartController loading');</span>
 <span class="cstat-no" title="statement not covered" >        var self = this;</span>
 <span class="cstat-no" title="statement not covered" >        $scope.empty= false;</span>
 <span class="cstat-no" title="statement not covered" >        self.greeting = 'Welcome';</span>
 <span class="cstat-no" title="statement not covered" >        self.totalPrice=0;</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >        $scope.getCart = <span class="fstat-no" title="function not covered" >function(){</span></span>
-<span class="cstat-no" title="statement not covered" >            self.list = listService.getList();</span>
+<span class="cstat-no" title="statement not covered" >            self.list = cartListService.getList();</span>
 <span class="cstat-no" title="statement not covered" >            console.log('Lista Cargada');</span>
         };
+&nbsp;
 <span class="cstat-no" title="statement not covered" >        $scope.getCart();</span>
+&nbsp;
 <span class="cstat-no" title="statement not covered" >        if(self.list &gt;= 0){</span>
 <span class="cstat-no" title="statement not covered" >            $scope.empty= true;</span>
         } else{
 <span class="cstat-no" title="statement not covered" >            $scope.empty= false;</span>
         };
+&nbsp;
 <span class="cstat-no" title="statement not covered" >        for(self.i=0; self.i&lt;self.list.length; self.i++){</span>
 <span class="cstat-no" title="statement not covered" >            self.totalPrice= self.totalPrice + self.list[self.i].price;</span>
         };
         
-<span class="cstat-no" title="statement not covered" >        $scope.removePurchase = <span class="fstat-no" title="function not covered" >function(id){</span></span>
-<span class="cstat-no" title="statement not covered" >            console.log(':D Prueba!')</span>
-        };
-        
-<span class="cstat-no" title="statement not covered" >        $scope.removeCart = <span class="fstat-no" title="function not covered" >function(){</span></span>
-<span class="cstat-no" title="statement not covered" >            self.list = listService.removeList();</span>
-<span class="cstat-no" title="statement not covered" >            if(self.list &gt;= 0){</span>
-<span class="cstat-no" title="statement not covered" >                $scope.empty= true;</span>
-            } else{
-<span class="cstat-no" title="statement not covered" >                $scope.empty= false;</span>
-            };
-<span class="cstat-no" title="statement not covered" >            self.totalPrice=0;</span>
-<span class="cstat-no" title="statement not covered" >            console.log('Lista Borrada');</span>
-        };
-        
 <span class="cstat-no" title="statement not covered" >        $scope.confirmCart = <span class="fstat-no" title="function not covered" >function () {</span></span>
-<span class="cstat-no" title="statement not covered" >            return confirm('Are you sure you want to delete cart ?');</span>
+<span class="cstat-no" title="statement not covered" >            var userConfirmation = confirm('Are you sure you want to delete cart ?');</span>
+<span class="cstat-no" title="statement not covered" >            if (userConfirmation) {</span>
+<span class="cstat-no" title="statement not covered" >                self.list = cartListService.removeList();</span>
+<span class="cstat-no" title="statement not covered" >                if(self.list &gt;= 0){</span>
+<span class="cstat-no" title="statement not covered" >                    $scope.empty= true;</span>
+                } else{
+<span class="cstat-no" title="statement not covered" >                    $scope.empty= false;</span>
+                };
+<span class="cstat-no" title="statement not covered" >                self.totalPrice=0;</span>
+<span class="cstat-no" title="statement not covered" >                console.log('Lista Borrada');</span>
+            }else{
+&nbsp;
+            };
         };
 	}
 );</pre></td></tr>
@@ -162,7 +165,7 @@
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 12 2016 11:47:57 GMT+0200 (Romance Daylight Time)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jul 13 2016 13:26:24 GMT+0200 (Romance Daylight Time)</div>
 </div>
 <script src="../../../prettify.js"></script>
 <script>

@@ -3,18 +3,22 @@
 angular.module('App.Controllers')
 
 .controller('purchaseController',
-    function ($log, $scope, $http, listService, $translate, tmhDynamicLocale) {
+    function ($log, $scope, $http, cartListService, $translate, tmhDynamicLocale) {
         $log.debug('purchaseController loading');
 
         $scope.greeting = 'Welcome';
-
-        $http.get('components/stock/stocks.json').then(function(data){
+        
+        //$scope.getStock = function(){
+        //    self.list = stockService.getList();
+        //    console.log('Lista Cargada');
+        //};
+        $http.get('components/BBDDjson/BBDDstocks.json').then(function(data){
         	$scope.stocks = data.data;
-        	console.log('data llegida', $scope.stocks);
+        	console.log('Stock Cargado', $scope.stocks);
     	});
         
         $scope.addToCart = function(stock){
-            listService.addToList(stock);
+            cartListService.addToList(stock);
             console.log('Hem afegit el producte ', stock);
         };
     }

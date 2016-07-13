@@ -3,7 +3,7 @@
 angular.module('App.Controllers')
 
 .controller('cartController',
-    function ($log, $scope, $http, listService, $translate, tmhDynamicLocale) {
+    function ($log, $scope, $http, cartListService, $translate, tmhDynamicLocale) {
         $log.debug('cartController loading');
         var self = this;
         $scope.empty= false;
@@ -11,7 +11,7 @@ angular.module('App.Controllers')
         self.totalPrice=0;
 
         $scope.getCart = function(){
-            self.list = listService.getList();
+            self.list = cartListService.getList();
             console.log('Lista Cargada');
         };
 
@@ -30,7 +30,7 @@ angular.module('App.Controllers')
         $scope.confirmCart = function () {
             var userConfirmation = confirm('Are you sure you want to delete cart ?');
             if (userConfirmation) {
-                self.list = listService.removeList();
+                self.list = cartListService.removeList();
                 if(self.list >= 0){
                     $scope.empty= true;
                 } else{

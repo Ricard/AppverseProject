@@ -44,7 +44,7 @@
     AppInit.setConfig({
         environment: {
             'REST_CONFIG': {
-                'BaseUrl': '/components/stock',
+                'BaseUrl': '/components/BBDDjson',
                 'RequestSuffix': '.json'
             }
         },

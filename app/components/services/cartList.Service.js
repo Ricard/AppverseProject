@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('App.Services')
-	.service('listService', function(){
+	.service('cartListService', function(){
 		this.list = [];
 		this.addToList = function (stock) {
 			this.list.push(stock);

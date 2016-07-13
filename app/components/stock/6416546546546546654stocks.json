@@ -1,0 +1,27 @@
+[
+    {
+        "id": 0, 
+        "imageUrl": "components/stock/img/tomato.jpg", 
+        "name": "Tomato", 
+        "snippet": "The more sold tomato ",
+        "buy":"tomato",
+        "price": 1,
+        "quantity": 547
+    }, 
+    {
+        "id": 1, 
+        "imageUrl": "components/stock/img/potato.jpg", 
+        "name": "Potato", 
+        "snippet": "The potato of the Year, a delicious taste",
+        "price": 3,
+        "quantity": 384
+    },
+    {
+        "id": 2, 
+        "imageUrl": "components/stock/img/strawberry.jpg", 
+        "name": "Strawberry", 
+        "snippet": "Fresh Strawberry",
+        "price": 1.5,
+        "quantity": 168
+    }
+]
