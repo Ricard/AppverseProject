@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('RssFeedModule');
+var app = angular.module('loginModule');
 
 app.controller('userLoginModalCtrl',
     function($scope, $uibModalInstance, AuthService, $state ) {

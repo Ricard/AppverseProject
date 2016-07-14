@@ -56,11 +56,12 @@ angular.module('appverseprojectApp')
           module: 'registered',
       
           resolve: {
-          tdlist: ['toDoResource','AuthService', function(toDoResource, AuthService) {
-            console.log('ENTREM EN RESOLVE TDLIST');
+          tdlist: ['toDoResource','userService', function(toDoResource, userService) {
+            
               var iduser;
-           return AuthService.getCurrentUser().then(function(data){
-                iduser = data.details.id;
+         //  return AuthService.getCurrentUser().then(function(data){
+             return userService.resolveUser().then(function(user){
+                iduser = user.userId;
                 console.log('id del usuari', iduser);
                 var filterParams = {
                       'fieldName': 'users',
@@ -101,8 +102,8 @@ angular.module('appverseprojectApp')
             controller: 'rssFeedCtrl as rssCtrl',
             module: 'registered',
             resolve: {
-              loggedUser: ['AuthService', function(AuthService) {
-                return AuthService.getCurrentUser();
+              loggedUser: ['userService', function(userService) {
+                return userService.resolveUser();
               }]
             }
           })

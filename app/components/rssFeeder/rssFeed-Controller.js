@@ -4,7 +4,7 @@ var app = angular.module('RssFeedModule');
 
 
 app.controller('rssFeedCtrl',
-    function(rssFeedSrv, $uibModal, FeedResource, AuthService, loggedUser) {
+    function(rssFeedSrv, $uibModal, FeedResource, loggedUser) {
     
         var vm = this;
         //Control for edit Feeders
@@ -15,8 +15,8 @@ app.controller('rssFeedCtrl',
         // List of Feeds
         vm.feedsLst = [];
         
-        vm.loggedUser = loggedUser;
-        vm.loggedId = vm.loggedUser.details.id;
+        
+        vm.loggedId = loggedUser.userId;
         console.log('id de loggedUser', vm.loggedId);
 
         // INITIALIZE RSS FEEDERS
@@ -106,11 +106,9 @@ app.controller('rssFeedCtrl',
             });
             modalInstance.result.then(function(feed) {
                 //vm.feedsLst.push(feed);
-                feed.users = AuthService.currentUser.details ? AuthService.currentUser.details.id : '';
+                feed.users =  vm.loggedId;
                 vm.newFeeder = new FeedResource(feed);
-                vm.newFeeder.$save(function(error) {
-                    // console.log('Error al guardar:', error);
-                });
+                vm.newFeeder.$save();
                 vm.initialize();
             });
         };
@@ -132,11 +130,7 @@ app.controller('rssFeedCtrl',
                 vm.initialize();
             });
         };
-        vm.testUser={};
-        AuthService.getCurrentUser().then(function(user){
-            vm.testUser = user;
-            console.log('Usuari per Promise from service', vm.testUser);
-        });
+     
         vm.initialize();
         
     });

@@ -1,6 +1,6 @@
 'use strict';
 
-    var app = angular.module('RssFeedModule');
+    var app = angular.module('loginModule');
        app.service('AuthService', ['$http', '$cookieStore', 'Backand','$q', AuthService]);
 
     function AuthService($http, $cookieStore, Backand,$q) {

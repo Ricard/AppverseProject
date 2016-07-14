@@ -25,7 +25,7 @@
         'appverse',
         'ngMdIcons',
         'ngCookies',
-        'loginModul',
+        'loginModule',
         'angular-loading-bar',
         'RssFeedModule',
         'toDoModule',

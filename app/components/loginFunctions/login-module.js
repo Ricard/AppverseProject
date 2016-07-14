@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('loginModul', [
+angular.module('loginModule', [
     'backand',
     ]);
 

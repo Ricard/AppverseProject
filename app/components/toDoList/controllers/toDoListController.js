@@ -1,19 +1,16 @@
 (function () {
     'use strict'; 
 var app = angular.module('toDoModule');
-app.controller('toDoListController', ['tdlist','toDoResource','$localStorage',
-    function( tdlist,toDoResource,$localStorage) {
+app.controller('toDoListController', ['tdlist','toDoResource','userService',
+    function( tdlist,toDoResource,userService) {
         
         // Creating Personalized Scope
         var vm = this;
        vm.orderBy = 'urgency';
        vm.showCompleted = false;
-       
-       $localStorage.test = "HOlaaaaaa????";
-       
-       console.log('data del token en Local Storage: ', $localStorage.BACKANDuser);
-       console.log('data del token en Local Storage per javascript: ', localStorage.BACKANDuser);
-       
+      
+   
+       console.log('Objecte de UserService LoggedUser', userService.getUser());
         // Fetching All elements from API Rest
         tdlist.$promise.then(function(data) {
             vm.list = data.data;
