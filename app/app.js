@@ -28,7 +28,8 @@
         'loginModul',
         'angular-loading-bar',
         'RssFeedModule',
-        'toDoModule'
+        'toDoModule',
+        'ngStorage'
 
 
     ]).run(function($log, editableOptions, $rootScope, $location, AuthService) {
@@ -59,8 +60,28 @@
         //         }
         //         }    
         // });
-        
-           
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //   //  $rootScope.$on('$stateChangeStart', function(ev, to, toParams, from, fromParams){
+        // 
+        //      
+        //
+        //              
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //    
+        //       
+        //      }   
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////        
+            
             
         // //     if (1 === 2) {
         // //                     ev.preventDefault(); //abort event propagation
