@@ -1,8 +1,8 @@
 (function () {
     'use strict'; 
 var app = angular.module('toDoModule');
-app.controller('toDoListController', ['tdlist','toDoResource','userService',
-    function( tdlist,toDoResource,userService) {
+app.controller('toDoListController', ['tdlist','toDoResource',
+    function( tdlist,toDoResource) {
         
         // Creating Personalized Scope
         var vm = this;
@@ -10,7 +10,8 @@ app.controller('toDoListController', ['tdlist','toDoResource','userService',
        vm.showCompleted = false;
       
    
-       console.log('Objecte de UserService LoggedUser', userService.getUser());
+        
+        console.log('testing on controller per null:', vm.testing);
         // Fetching All elements from API Rest
         tdlist.$promise.then(function(data) {
             vm.list = data.data;

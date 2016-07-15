@@ -158,7 +158,7 @@ angular.module('appverseprojectApp')
                 }
               }).result.then(
                 function(userRegister, username) {
-                  AuthService.signUp(userRegister.firstName, userRegister.lastName,
+                  AuthService.signUp(userRegister.firstname, userRegister.lastname,
                       userRegister.username, userRegister.password, AuthService.appName)
                     .then($state.go('rssFeed'));
                   console.log('usuari a registrar', userRegister);

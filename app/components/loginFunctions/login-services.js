@@ -1,6 +1,6 @@
 'use strict';
 angular.module('loginModule')
-.controller('loginController', function($scope, $uibModal, AuthService, $state ){
+.controller('loginController', function($scope, $uibModal, AuthService, $state, userService ){
    
    var self = this;
 

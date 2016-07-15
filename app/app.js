@@ -32,54 +32,30 @@
         'ngStorage'
 
 
-    ]).run(function($log, editableOptions, $rootScope, $location, AuthService) {
+    ]).run(function($log, editableOptions, $rootScope, $location, userService,$state) {
         $log.debug('testAlphaApp run');
         editableOptions.theme = 'bs3';
         $('#menu-toggle').click(function(e) {
             e.preventDefault();
             $('#wrapper').toggleClass('toggled');
         });
-        //
-        // $rootScope.$on('$stateChangeStart', function(ev, to, toParams, from, fromParams) {
-        //   console.log('CRIDA DE INTERCEPTOR');
-            
-        //   AuthService.getCurrentUser().then(function(data){
-        //       console.log('data from userdata', data)
-        //      //$rootScope.loggedUserId = data.details.id;
-        //         if(to.url != '/home'){
-        //             if(data.details){
-        //         console.log('esta en True el ID');
-        //         ev.preventDefault();  //abort event propagation
-        //             $location.path(to.url);
-
-        //         }else{
-
-        //                 ev.preventDefault();  //abort event propagation
-        //                 $location.path('/login'); 
-
-        //         }
-        //         }    
-        // });
+  
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //   //  $rootScope.$on('$stateChangeStart', function(ev, to, toParams, from, fromParams){
-        // 
-        //      
-        //
-        //              
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //
-        //    
-        //       
-        //      }   
+        ///// ROUTE INTERCEPTOR. PREVENT LOAD PAGES THAT REQUIRES LOGGED USER
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+           $rootScope.$on('$stateChangeStart', function(ev, to, toParams, from, fromParams){
+             console.log('values of TO:', to);
+             //console.log('values of TOPARAMS:', toParams);
+             //console.log('values of FROM:', from);
+             //console.log('values of FROMPARAMS:', fromParams);    
+             //console.log('values of EV:', ev);  
+             
+             if (to.module === 'registered' && !userService.getUser()){
+                 console.log('Modul privat i usuari no Logat');
+                 ev.preventDefault();
+                 $state.go('login');
+             }
+         });   
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////        
             
             
